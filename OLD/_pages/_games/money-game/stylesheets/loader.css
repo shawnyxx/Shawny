@@ -1,0 +1,33 @@
+#loader {
+    position: absolute;
+    background-color: black;
+    display: flex;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#ecxo-outro {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#loading-text {
+    color: white;
+    position: absolute;
+    bottom: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+.game {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}

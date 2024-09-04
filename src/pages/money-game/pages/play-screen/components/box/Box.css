@@ -1,0 +1,53 @@
+/* General style */
+.Box {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.MainBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+span {
+    white-space: nowrap;
+}
+
+.TheMoneyGameText {
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.ButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transform: translateY(-30px);
+}
+
+@media (max-width: 768px) {
+    .Box {
+        width: 90vw;
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .Box {
+        width: 50vw;
+        height: 150px;
+    }
+}
