@@ -1,0 +1,33 @@
+#crypto-gains-window {
+    overflow: hidden;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#cryptoChart-container {
+    display: flex;
+    height: 250px;
+    justify-content: center;
+}
+
+#cryptoChart {
+	padding: 15px;
+	width: 100%;
+	height: 100%;
+}
+
+#crypto-gains-menu-list {
+    overflow-y: hidden;
+    height: 25px;
+    transition: ease 0.5s;
+}
+
+#crypto-gains-menu-list:hover {
+    overflow-y: scroll;
+    height: 200px;
+}
+
+#crypto-gains-menu-list::-webkit-scrollbar {
+    display: none;
+}
