@@ -1,0 +1,57 @@
+Shawny Features
+
+
+Time manager:
+
+The game will have a time manager that handles all the logic and events in the game.
+1 second = 1 day
+30 or 31 days = one month
+365 seconds (days) = one year (unless it's a bissextile year)
+
+The time manager will run all the time and will trigger a save every year (365-366 days/seconds)
+
+
+
+
+.
+
+Saving and loading progress:
+
+All the variables for the games will be stored in the browser local storage unless the player is a registered ecxogames user (which we will need to implement very early)
+
+Saving options:
+	- Every year: (365-366 days/seconds), the game saves either to the local-storage or to its user account data.
+	- Manually: If the user wants to make sure he doesn't loose his progress, he can also save the game manually from the settings menu
+	- Auto-saving: The game also saves automatically every 30 seconds in a very light json file in local-storage in case of a unexpected issue with the game
+		> it can be loaded from the settings
+		> it will ask you if you wish to recover your save when joining back after a crash or forced closed
+
+Loading options:
+	- When you die: When you die, it shows an option to load a save or to start a new game (but it doesn't show you the last save of the game you just died because it would be cheating)
+	- When you launch the game for the first: When you just logged in on a new device
+	- From the settings: You can load a game from the settings
+
+
+
+Events and probabilities:
+
+Every days:
+	- The property condition decreases (between 0.00001% to 0.00004%)
+Every weeks:
+	- You receive your paycheck (if your job pays weekly)
+	- You health changes (25% to be bad, 25% to be good, and 50 to stay stable)
+Every months:
+	- The Crypto Market release its reports (--Market Decrease--, ++Market Increase++, ~~Market Stalling~~, or ##Market Crash##)
+	- Bills comes up ready to pay. The bills contains:
+		> Rented property(ies) expenses (if your landlord charges monthly)
+		> *Expenses like gas, wifi, cellular and other stuff (I am still thinking if we should add wifi and gas into the game, but it could add a bit of spicy)
+Every three months:
+	- You will either pass or fail your session
+		> If you passed the 3 exams with a minimum grade of 60%, you will be able to proceed with your next grade
+Every years:
+	- You complete one year of your degree
+		> 3 sessions, depending on what you have done during the year, you will either pass or fail. You will need to have passed the 9 24 exams with a minimum grade of 60 %
+	- The interest rate of all your bank account increases of a value between 0.001x^2 to 0.04x^2 (exponential curve)
+	- Bills comes up ready to pay. The bills contains:
+		> Your properties electricity bills
+		> Rented property(ies) expenses (if your landlord charges yearly)

@@ -1,0 +1,33 @@
+.GameCard {
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+    cursor: pointer;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.GameCard::before {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.GameCard:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    border-color: rgba(0, 255, 255, 0.8);
+}
+
+.GameCardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

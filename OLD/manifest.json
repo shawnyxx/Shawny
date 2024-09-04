@@ -1,0 +1,22 @@
+{
+  "name": "Shawny App",
+  "short_name": "Shawny",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/_files/images/logos/shawny512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": "Shawny is a small but ambitious project designed to make the gaming world more accessible to everyone. With a focus on seamless, browser-based gaming, Shawny allows players to enjoy games natively without the need for downloads or installations. The platform stands out by delivering smooth gameplay directly in your browser, and future updates will ensure it meets the needs of gamers of all abilities, making the experience even more inclusive and enjoyable.",
+  "id": "shawny.app",
+  "lang": "en",
+  "orientation": "portrait",
+  "categories": [
+    "games"
+  ]
+}

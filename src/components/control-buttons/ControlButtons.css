@@ -1,0 +1,46 @@
+
+.dragging {
+    cursor: grabbing;
+}
+
+.RefreshButton {
+    background-image: url(../../../public/files/images/icons/pngs/refresh.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform ease 0.25s;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9;
+    cursor: grab;
+}
+
+.RefreshButton:hover {
+    transform: scale(1.2);
+}
+
+.BackButton {
+    background-image: url(../../../public/files/images/icons/pngs/back.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform ease 0.25s;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9;
+    cursor: grab;
+}
+
+.BackButton:hover {
+    transform: scale(1.2);
+}

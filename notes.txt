@@ -1,1 +1,0 @@
-Command to build the native app: nativefier "https://yourwebsite.com" --name "YourAppName" --icon "path/to/your/icon.ico"

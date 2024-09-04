@@ -1,0 +1,35 @@
+.Home {
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.HomeContent {
+    display: grid;
+    grid-auto-flow: column;
+    padding: 50px;
+    height: 250px;
+    overflow-x: auto;
+    justify-items: center;
+    align-items: center;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    z-index: 1;
+}
+
+.SettingsButton {
+    z-index: 1;
+    position: absolute;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    top: 0;
+    right: 0;
+}
