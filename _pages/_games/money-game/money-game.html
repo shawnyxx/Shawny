@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Money Game</title>
+
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/browser-style.css">
+    <link rel="stylesheet" href="./stylesheets/page-style.css">
+    <link rel="stylesheet" href="./stylesheets/dashboard.css">
+    <link rel="stylesheet" href="./stylesheets/main-menu.css">
+    <link rel="stylesheet" href="./stylesheets/loader.css">
+    <link rel="stylesheet" href="./stylesheets/animations.css">
+    <link rel="stylesheet" href="./stylesheets/housing-market-style.css">
+    <link rel="stylesheet" href="./stylesheets/housingmarket.css">
+    <link rel="stylesheet" href="./stylesheets/window.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div id="loader">
+        <img src="/_files/images/gif/ecxo-outro.gif" id="ecxo-outro">
+
+        <p id="loading-text">Loading</p>
+    </div>
+
+    <script src="./scripts/loader.js"></script>
+
+    <div class="game">
+        <div class="main-menu" id="menu">
+
+            <!-- ^ Main menu -->
+            <div id="main-menu-content">
+                <div id="main-menu-title" class="main-menu-content">
+                    
+                    <h1>Money Game</h1>
+
+                    <br>
+
+                    <p>Click play to start</p>
+
+                    <br><br>
+
+                    <p>The development of this game is managed by: S. Xavier Charland L.</p>
+
+                    <br>
+
+                    <h2>What's new?</h2>
+
+                    <p>Version V.0.0.1.2 [Beta]</p>
+
+                    <br>
+
+                    <container id="whats-new">
+
+                        <h4>UI & Features</h4>
+                        <p>Added motion to some menu interactions</p>
+                        <p>Added a new education system</p>
+                        <p>Improved crypto management</p>
+                        <p>Improved the housing market system</p>
+                        <p>Minor UI improvement on low end devices</p>
+                        <p>Added a bank system</p>
+                        <p>Added a notebook (Highly requested)</p>
+                        <p>Added a way to see the month's progress</p>
+                        <p>Money machine is now illegal 🏴‍☠️</p>
+                        
+                        <br>
+                        
+                        <p>Rebalanced the whole way of making money</p>
+                        <p>New Windows 10/11 desktop application</p>
+                        <p>New keyboard navigation support</p>
+                        <p>Improved performance and stability</p>
+                        <p>Improved the data managment</p>
+                        <p>Support for different devices</p>
+                        <h4>Bug fixes & Optimization</h4>
+                        
+                        <br>
+                        
+                        <h4>Upcoming/In progress</h4>
+                        <p>Offline mode for mobile devices</p>
+                        <p>Working on a new business system</p>
+                        <p>Working on some new UI elements</p>
+
+                        <br>
+
+                        <p style="font-weight: bold;">This project is made with 💪 and 💖</p>
+                        <p>By Shawnyxx and Ecxo Games Studio</p>
+                    </container>
+
+                    <p style="font-size: small; text-decoration: underline;">* Scroll down for more...</p>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <button onclick="startGame()">Play</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="title-bar">
+                <button id="suicide-button" onclick="suicide()"></button>
+                <button class="text-button" onclick="support()">Contact Support</button>
+                <h1>Money Game</h1>
+                <p>Tap the screen to start making money</p>
+            </div>
+
+            <p id="counter" class="counter">Money: 0</p>
+
+            <div id="actions"></div>
+
+            <button onclick="openBrowser()">Browse Internet</button>
+
+            <div id="month-indicator"></div>
+
+            <browser id="browser">
+                <browsercontent>
+                <!-- ^ Popup windows -->
+                <popupcontainer>
+                    <div id="manage-property-window" class="window">
+                        <p>Manage Your Properties</p>
+
+                        <button id="close-manage-property-window-button"
+                            onclick="closeManagePropertyWindow()"></button>
+
+                        <br>
+
+                        <div id="property-window-content"></div>
+                    </div>
+
+                    <div id="crypto-gains-window" class="window">
+                        <container>
+                            <h3>Crypto Gains:</h3>
+                        </container>
+
+                        <container>
+                            <div id="crypto-window-dragg" style="width: 100%;">
+                                <p>View your crypto gains</p>
+                            </div>
+                            <button id="close-manage-property-window-button" onclick="closeCryptoGains()"></button>
+
+                            <div id="cryptoChart-container">
+                                <canvas id="cryptoChart"></canvas>
+                            </div>
+
+                            <div id="crypto-gains-menu-list"></div>
+
+                        </container>
+                    </div>
+
+                    <div id="business-window" class="window">
+                        <container>
+                            <h3>Business</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeBusinessWindow()"></button>
+
+                            <p>This feature are currently in development...</p>
+
+                        </container>
+                    </div>
+
+                    <div id="degree-window" class="window">
+                        <container>
+                            <h3>Chose an area of study</h3>
+                            <button id="close-manage-property-window-button" onclick="closeDegreeWindow()"></button>
+
+                            <div id="choose-degree" class="degree-menu-element">
+
+                                <!-- High school card -->
+                                <button id="highschool-card" class="degreecard" onclick="getDegree(0, 0)">
+                                    <emoji>
+                                        🏫
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="high-school-level">High School</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p style="color: green;">Free</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p>5 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <!-- Community college card -->
+                                <button id="community-college-card" class="degreecard" onclick="showDegreeList('College')">
+                                    <emoji>
+                                        📖
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="community-college-level">Community College</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p style="color: green;">Free</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p id="community-college-length">2-3 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <!-- University card -->
+                                <button id="university-card" class="degreecard" onclick="showDegreeList('University')">
+                                    <emoji>
+                                        🎓
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="high-school-level">University</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p id="university-price" style="color: green;">$20k (min)</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p id="university-length">2-6 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <p style="width: 100%;">These features are currently in development...</p>
+                            </div>
+                            
+                            <div id="degree-menu-list" class="degree-menu-element">
+                                <button class="text-button" onclick="closeDegreeList()">Back</button>
+                                <h4>Degree menu list</h4>
+                                <div id="degree-list"></div> <!-- Degree Menu List -->
+                            </div>
+                        </container>
+                    </div>
+
+                    <div id="notebook-window" class="window">
+                        <container>
+                            <h3>Notebook</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeNotebook()"></button>
+
+                            <textarea id="notebook" placeholder="Start being creative"></textarea>
+                        </container>
+                    </div>
+
+                    <div id="bank-account-window" class="window">
+                        <container>
+                            <h3>Bank of New York</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeBankAccountWindow()"></button>
+
+                            <h4>Holdings</h4>
+                            <h1 style="color: green" id="holdings">No current holdings</h1 style="color: green">
+                                
+                            <button id="deposit-money" class="default-button" onclick="depositMoney()">➕ Deposit</button>
+                            <button id="withdraw-money" class="default-button" onclick="withdrawMoney()">➖ Withdraw</button>
+                                
+                        </container>
+                    </div>
+                </popupcontainer>
+                    <browserblur>
+                        <browsertopbar>
+                            <button onclick="closeBrowser()"
+                                style="margin: 2px; width: 15px; height: 15px; background-color: red; border: none; border-radius: 25px; color: white;"></button>
+                            <button
+                                style="margin: 2px; width: 15px; height: 15px; background-color: yellow; border: none; border-radius: 25px; color: white;"></button>
+                            <button
+                                style="margin: 2px; width: 15px; height: 15px; background-color: green; border: none; border-radius: 25px; color: white;"></button>
+
+                            <span style="width: 100%; display: inline-flex; justify-content: center; flex-direction: column; flex-wrap: wrap;">
+                                <p>Desktop Browser</p>
+                                <p id="counter" class="counter" style="font-size: 8px; margin-top: 0; color: green;">money</p>
+                            </span>
+                        </browsertopbar>
+
+                        <browsercontainer>
+
+
+                            <button onclick="viewStats()" class="tab-bttn" id="stats-bttn" disabled>Your Stats</button>
+                            <button onclick="viewServices()" class="tab-bttn" id="services-bttn">Services</button>
+                            <button onclick="viewHousingMarket()" class="tab-bttn"
+                                id="property-bttn">Housingmarket</button>
+                            <button onclick="viewInvestments()" class="tab-bttn" id="crypto-bttn">Investments</button>
+
+                            <!-- ^ Webpage content -->
+                            <webpage>
+
+                                <!-- ^ Stats menu -->
+                                <stats>
+                                    <statsheader>
+                                        <div class="time">
+                                            <div class="month">
+                                                <h1 id="time-of-year">Current month: January</h1>
+                                            </div>
+
+                                            <div class="age">
+                                                <p id="age">You are in your first month.</p>
+                                            </div>
+                                        </div>
+                                    </statsheader>
+
+                                    <statscontent>
+                                        <p class="inline-block" id="total-properties">🏡 Total
+                                            properties:
+                                            No
+                                            properties</p>
+                                        <button class="text-button inline-block"
+                                            onclick="openManagePropertyWindow()">Manage
+                                            Properties</button>
+
+                                        <br>
+
+                                        <p class="inline-block">🤑 Net worth: </p>
+                                        <p class="inline-block" id="net-worth"></p>
+
+                                        <br>
+
+                                        <p class="inline-block">➕ Interest: </p>
+                                        <p class="inline-block" id="interest" style="color: purple;"></p>
+                                        
+                                        <br>
+
+                                        <p class="inline-block">💵 Salary: </p>
+                                        <p class="inline-block" id="salary">No current salary</p>
+
+                                        <br>
+
+                                        <p class="inline-block">💰 Last month profit: </p>
+                                        <p id="last-month-profit" class="inline-block"></p>
+
+                                        <br>
+
+                                        <p class="inline-block">📅 Last taxes</p>
+                                        <p id="last-taxes" class="inline-block" style="color: red;"></p>
+
+                                        <br>
+                                        
+                                        <p class="inline-block">🎓 Studies</p>
+                                        
+                                        <p id="studies" class="inline-block">No enrolled</p>
+                                        <button class="inline-block text-button" onclick="seeObtainedDegrees()">See obtained degrees</button>
+
+                                        <br>
+                                        
+                                        <p class="inline-block">📝 Notebook</p>
+                                        <button class="inline-block text-button" onclick="viewNotebook()">Open notebook</button>
+                                    </statscontent>
+                                </stats>
+
+                                <!-- ^ Upgrade menu -->
+                                <services>
+
+                                    <h2>
+                                        Services
+                                    </h2>
+
+                                    <grid>
+                                        <card id="education-card" onclick="openDegreeWindow()">
+
+                                            <cardtitle>School/Degree</cardtitle>
+
+                                            <cardemoji>
+                                                🎓
+                                            </cardemoji>
+
+                                            <cardtextcontainer>
+                                                <span>
+                                                    <p>Level: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="education-level">High school
+                                                    </p>
+                                                </span>
+                                                <span>
+                                                    <p>Cost to enroll: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="education-cost">none</p>
+                                                </span>
+                                                <span>
+                                                    <p>Time to finish: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="education-duration">5 years
+                                                    </p>
+                                                </span>
+                                                <span>
+                                                    <p>Promised salary: </p>
+                                                    <p style="color: rgb(255, 0, 0);" id="education-salary">$11/tap</p>
+                                                </span>
+                                            </cardtextcontainer>
+
+                                        </card>
+                                        <card id="business-card" onclick="openBusinessWindow()">
+
+                                            <cardtitle>Start a business</cardtitle>
+
+                                            <cardemoji>
+                                                💼
+                                            </cardemoji>
+
+                                            <cardtextcontainer>
+                                                <span>
+                                                    <p>
+                                                        <bold>Business types</bold>
+                                                    </p>
+                                                </span>
+                                                <span>
+                                                    <p>Scam agency: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="business-cost">$2 to $50k per
+                                                        month</p>
+                                                </span>
+                                                <span>
+                                                    <p>Retail store: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="business-duration">$90k to
+                                                        $300k per month</p>
+                                                </span>
+                                                <span>
+                                                    <p>Car shop: </p>
+                                                    <p style="color: rgb(255, 0, 0);" id="business-salary">$50k to $550k
+                                                        per month</p>
+                                                </span>
+                                            </cardtextcontainer>
+
+                                        </card>
+                                        <card id="property-card" onclick="viewHousingMarket()">
+
+                                            <cardtitle>Buy a property</cardtitle>
+
+                                            <cardemoji>
+                                                🏠
+                                            </cardemoji>
+
+                                            <cardtextcontainer>
+                                                <span>
+                                                    <p>You want to buy a house, or a planet</p>
+                                                </span>
+                                                <span>
+                                                    <p>Properties available for all budget</p>
+                                                </span>
+                                                <span>
+                                                    <p style="color: rgb(0, 255, 0);">See you on buyahouse.com</p>
+                                                </span>
+                                            </cardtextcontainer>
+
+                                        </card>
+                                        <card id="Investments-card" onclick="viewInvestments()">
+
+                                            <cardtitle>Investments</cardtitle>
+
+                                            <cardemoji>
+                                                📈
+                                            </cardemoji>
+
+                                            <cardtextcontainer>
+                                                <span>
+                                                    <p>Maximum gain: </p>
+                                                    <p style="color: rgb(0, 255, 0);" id="education-level">170%</p>
+                                                </span>
+                                                <span>
+                                                    <p>Maximum loss: </p>
+                                                    <p style="color: rgb(255, 0, 0);" id="education-cost">-70%</p>
+                                                </span>
+                                            </cardtextcontainer>
+
+                                        </card>
+                                        <card id="job-card" onclick="getJob()">
+
+                                            <cardtitle>Job</cardtitle>
+
+                                            <cardemoji>
+                                                ⚒️
+                                            </cardemoji>
+
+                                            <cardtextcontainer>
+                                                <span>
+                                                    <p>Increases the amount of money per tap</p>
+                                                </span>
+                                                <span>
+                                                    <p>Paychecks depends on your salary</p>
+                                                </span>
+                                                <span>
+                                                    <p id="job-info">You are not currently working</p>
+                                                </span>
+                                            </cardtextcontainer>
+
+                                        </card>
+                                    </grid>
+
+                                </services>
+
+                                <!-- ^ Crypto gains menu -->
+                                <crypto>
+
+                                    <container>
+                                        <h2>Investments</h2>
+                                    </container>
+
+                                    <space></space>
+
+                                    <container>
+                                        <h3>Upgrades</h3>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <p>Buy Money Machine</p>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <button id="moneyMachineButton" class="default-button" onclick="buyMoneyMachine()">Buy Money Machine</button>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <p>Open Spamm Business</p>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <button id="spammUpgradeButton" class="default-button" onclick="buySpammUpgrade()">...</button>
+                                    </container>
+
+
+                                    <space></space>
+                                    
+                                    <container>
+                                        <h3>Crypto</h3>
+                                    </container>
+                                    
+                                    <container style="margin-left: 15px;">
+                                        <p>Crypto</p>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <button id="cryptoAccountButton" class="default-button" onclick="openCryptoAccount()">💹 Open Crypto Account (Free)</button>
+                                    </container>
+                                    
+                                    <container style="margin-left: 15px;">
+                                        <button id="viewCryptoButton" class="default-button" onclick="viewCryptoGains()">View Crypto Gains</button>
+                                    </container>
+
+
+                                    <space></space>
+
+                                    <container>
+                                        <h3>Banking</h3>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <p>Bank</p>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <button id="open-bank-account-bttn" class="default-button" onclick="openBankAccount()">Open bank account</button>
+                                    </container>
+                                    
+                                    <conatiner style="margin-left: 15px;">
+                                        <button id="view-bank-account-window-bttn" class="default-button" onclick="viewBankAccountWindow()" disabled>View bank account</button>
+                                    </conatiner>
+
+                                </crypto>
+
+                                <!-- ^ Properties menu -->
+                                <housingmarket>
+
+                                    <container>
+                                        <h2>List of properties</h2>
+                                    </container>
+
+                                    <container>
+                                        <p>Click a property to buy it</p>
+                                    </container>
+
+                                    <propertylist id="property-list">
+                                        
+                                    </propertylist>
+
+                                    <p style="text-align: center; width: 100%;">You reached the end of the page... New properties gets listed here each month.</p>
+
+
+
+                                </housingmarket>
+
+                            </webpage>
+                        </browsercontainer>
+                    </browserblur>
+
+
+                </browsercontent>
+
+            </browser>
+        </div>
+
+		<script src="/_public/libraries/controls.js"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+        <!-- ^ Libraries -->
+        <script src="/_public/libraries/public-library.js" type="text/javascript"></script>
+
+        <script src="./scripts/variables.js"></script>
+
+        <script src="./scripts/lists.js"></script>
+
+        <script src="/_public/libraries/notation-numérique.js" type="text/javascript"></script>
+
+        <script src="/_public/libraries/window-creator.js" type="text/javascript"></script>
+
+        <script src="/_public/libraries/notification.js" type="text/javascript"></script>
+
+        <script src="/_public/libraries/support.js"></script>
+
+
+        
+        <!-- ^ Scripts -->
+        <script src="/data.js" type="text/javascript"></script>
+
+        <script src="./scripts/main.js" type="text/javascript"></script>
+
+        <script src="./scripts/broswer.js" type="text/javascript"></script>
+
+        <script src="./scripts/stats-menu.js" type="text/javascript"></script>
+
+        <script src="./scripts/money-manager.js" type="text/javascript"></script>
+
+        <script src="./scripts/spamm-business-manager.js" type="text/javascript"></script>
+
+        <script src="./scripts/money-machine-manager.js" type="text/javascript"></script>
+
+        <script src="./scripts/crypto-manager.js" type="text/javascript"></script>
+
+        <script src="./audio/audio-manager.js" type="text/javascript"></script>
+
+        <script src="./scripts/monthly-events.js" type="text/javascript"></script>
+
+        <script src="./scripts/properties.js" type="text/javascript"></script>
+
+        <script src="./scripts/job-manager.js" type="text/javascript"></script>
+
+        <script src="./scripts/manage-properties-window.js" type="text/javascript"></script>
+
+        <script src="./scripts/education.js"></script>
+
+        <script src="./scripts/business.js"></script>
+
+        <script src="./scripts/bank-account-window.js"></script>
+
+        <script src="./scripts/notebook.js"></script>
+
+</body>
+</html>
