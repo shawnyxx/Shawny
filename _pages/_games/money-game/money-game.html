@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Game</title>
+
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/stats-menu.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/style.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/browser-style.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/page-style.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/debug-menu.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/dashboard.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/main-menu.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/notification-container.css">
+    <link rel="stylesheet" href="/_pages/_games/money-game/stylesheets/manage-properties-window.css">
+
+
+    <script src="/_public/services/service.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="notification-container"></div>
+
+
+
+    <div class="main-menu" id="menu">
+
+        <div id="main-menu-content">
+            <div id="main-menu-title" class="main-menu-content">
+                <h1>Money Game</h1>
+
+                <br>
+
+                <p>Click play to start</p>
+
+                <br><br><br><br><br>
+
+                <p>The development of this game is managed by: S. Xavier Charland L.</p>
+            </div>
+
+
+            <div id="main-menu-start-bttn-container" class="main-menu-content">
+                <button onclick="startGame()">Play</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="content">
+        <div class="title-bar">
+            <button id="suicide-button" onclick="suicide()"></button>
+            <h1>Money Game</h1>
+            <p>Tap the screen to start making money</p>
+        </div>
+
+
+
+        <p id="counter">Money: 0</p>
+
+        <div id="actions"></div>
+
+        <button onclick="viewStats()">View Stats</button>
+
+        <button onclick="openBrowser()">Browse Internet</button>
+
+        <div id="browser">
+            <div id="online-browser">
+                <div id="browser-topbar">
+                    <div id="browser-title-bar">
+                        <button id="browser-green-bttn"></button>
+                        <button id="browser-yellow-bttn"></button>
+                        <button id="close-browser-bttn" onclick="closeBrowser()"></button>
+                    </div>
+                    <div id="browser-topbar-content">
+                        <input id="browser-searchbar" placeholder="🔎 Type a search">
+                    </div>
+                </div>
+
+                <div id="browser-content">
+
+                    <div id="manage-property-window">
+                        <div id="dragg" style="width: 100%;">
+                            <p>Manage Your Properties</p>
+                        </div>
+                        <button id="close-manage-property-window-button" onclick="closeManagePropertyWindow()"></button>
+
+                        <br>
+
+                        <div id="property-window-content"></div>
+                    </div>
+
+
+
+
+
+                    <div id="web-page-content">
+                        <div class="webpage">
+
+                            <button onclick="viewStats()" class="tab-bttn" id="stats-bttn" disabled>Your Stats</button>
+
+                            <button onclick="openUpgradeMenu()" class="tab-bttn" id="upgrade-bttn">Buy Upgrades</button>
+
+                            <button onclick="openPropertyMenu()" class="tab-bttn" id="property-bttn">Buy
+                                Properties</button>
+
+                            <button onclick="viewCryptoGains()" class="tab-bttn" id="crypto-gains-bttn">View Crypto
+                                Gains</button>
+
+                            <div id="stats-menu">
+                                <div id="stats-menu-container">
+                                    <div id="info-panel">
+                                        <h1 id="time-of-year">Test</h1>
+                                        <p id="age">Age</p>
+
+                                    </div>
+
+                                    <div id="profile-panel">
+                                        <p>Profile</p>
+
+                                        <span>
+                                            <p class="inline-block" id="total-properties">🏚️ Total properties: No
+                                                properties</p>
+                                            <button class="text-button inline-block"
+                                                onclick="openManagePropertyWindow()">Manage Properties</button>
+                                        </span>
+
+                                        <span>
+                                            <p class="inline-block">🤑 Net worth: </p>
+                                            <p class="inline-block" id="net-worth"></p>
+                                        </span>
+                                    </div>
+
+                                    <div id="finances-panel">
+                                        <p>Finances</p>
+                                        <span>
+                                            <p class="inline-block">💵 Salary: </p>
+                                            <p class="inline-block" id="salary">No current salary</p>
+                                        </span>
+                                        <span>
+                                            <p class="inline-block">💰 Last month profit: </p>
+                                            <p id="last-month-profit" class="inline-block"></p>
+                                        </span>
+                                    </div>
+
+                                    <div id="noname-panel">
+                                        <p>Coming soon...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="upgrade-menu">
+
+                                <h2>
+                                    Upgrade Options
+                                </h2>
+
+                                <button id="moneyMachineButton" class="default-button" onclick="buyMoneyMachine()">
+                                    Buy Money Machine
+                                </button>
+
+                                <button id="cryptoAccountButton" class="default-button" onclick="openCryptoAccount()">
+                                    💹 Open Crypto Account (Free)
+                                </button>
+
+                                <button id="spammUpgradeButton" class="default-button" onclick="buySpammUpgrade()">
+                                    ...
+                                </button>
+
+                                <button id="jobBttn" onclick="getJob()">
+                                    💼 Get a job
+                                </button>
+
+                            </div>
+
+
+                            <div id="crypto-gains-menu">
+
+                                <h2>Crypto Gains</h2>
+
+                                <div>
+                                    <canvas id="myChart"></canvas>
+                                </div>
+
+                                <div id="crypto-gains-menu-list"></div>
+
+                            </div>
+
+
+                            <div id="property-menu">
+
+
+                                <h2>Property Options</h2>
+
+
+                                <p>Buy</p>
+
+                                <button id="apartementButton" class="default-button"
+                                    onclick="buyProperty('Apartement')">
+                                    Buy Apartment
+                                </button>
+
+                                <button id="condoButton" class="default-button" onclick="buyProperty('Condo')">
+                                    Buy Condo
+                                </button>
+
+
+                                <button id="houseButton" class="default-button" onclick="buyProperty('House')">
+                                    Buy House
+                                </button>
+
+                                <button id="castleButton" class="default-button" onclick="buyProperty('Castle')">
+                                    Buy Castle
+                                </button>
+
+                                <button id="mansionButton" class="default-button" onclick="buyProperty('Mansion')">
+                                    Buy
+                                    Mansion
+                                </button>
+
+                                <button id="islandButton" class="default-button" onclick="buyProperty('Island')">
+                                    Buy an Island
+                                </button>
+
+
+                                <button id="planetButton" class="default-button" onclick="buyProperty('Planet')">
+                                    Buy Planet
+                                </button>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <button id="debug-button" onclick="handleDebugButtonClick()">🪲</button>
+
+        <div id="debug-menu">
+
+            <h2>Debug Menu</h2>
+
+
+            <p>Money value</p>
+
+
+            <input type="number" id="moneyInput" placeholder="Enter an amount">
+
+
+            <button class="default-button" onclick="setMoney()">Cheat</button>
+
+
+            <br>
+
+
+            <p>Set month</p>
+
+
+            <input type="number" id="monthInput" placeholder="Enter a value">
+
+
+            <button class="default-button" onclick="setMonth()">Cheat</button>
+
+
+            <br>
+
+
+            <button class="default-button" onclick="closeDebugMenu()">Close</button>
+
+
+        </div>
+
+
+
+        <!-- Libraries -->
+        <script src="/_public/libraries/public-library.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/pointer-events@2.1.1/dist/pointer-events.min.js"></script>
+
+        <script src="/_public/libraries/notation-numérique.js"></script>
+
+        <script src="/_public/libraries/window-creator.js"></script>
+
+
+
+        <!-- Script management -->
+
+
+        <script src="/_pages/_games/money-game/scripts/main.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/stats-menu.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/debug-manager.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/money-manager.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/upgrades-manager/spamm-upgrade.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/upgrades-manager/money-machine-upgrade.js"></script>
+
+        <script src="/_pages/_games/money-game/audio/audio-manager.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/monthly-events.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/crypto.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/properties.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/job-manager.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/do-notification.js"></script>
+
+        <script src="/_pages/_games/money-game/scripts/window-manager/manage-properties-window.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+#notification-container {
+    z-index: 50;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 300px;
+    height: auto;
+    background-color: none;
+    pointer-events: none;
+}

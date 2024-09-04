@@ -1,0 +1,220 @@
+* {
+    font-family: Arial;
+    overflow: hidden;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+body {
+    margin: 0;
+}
+
+button {
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: black;
+    cursor: pointer;
+}
+
+button:active {
+    border-color: gray;
+    color: gray;
+}
+
+
+.play-menu {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 10;
+}
+
+#tabarnak {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+}
+
+#about-us-window {
+    display: none;
+    position: absolute;
+    scale: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+}
+
+#about-us-bttn1 {
+    position: absolute;
+    color: red;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border: none;
+    border-radius: 100%;
+    left: 10px;
+    top: 10px;
+}
+
+#about-us-bttn2 {
+    position: absolute;
+    color: yellow;
+    width: 25px;
+    height: 25px;
+    background-color: yellow;
+    border: none;
+    border-radius: 100%;
+    left: 40px;
+    top: 10px;
+}
+
+#about-us-bttn3 {
+    position: absolute;
+    color: green;
+    width: 25px;
+    height: 25px;
+    background-color: green;
+    border: none;
+    border-radius: 100%;
+    left: 70px;
+    top: 10px;
+}
+
+#video-background {
+    position: absolute;
+    width: 100vw;
+    height: auto;
+}
+
+#video-2-background {
+    opacity: 0;
+    position: absolute;
+    width: 100vw;
+    height: auto;
+}
+
+#menu-content {
+    z-index: 11;
+    position: absolute;
+    padding: 5px;
+    width: 50%;
+    min-height: 250px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#start-menu-content {
+    width: 100%;
+    height: 180px;
+    border: 1px solid white;
+    border-radius: 6px;
+    background-color: black;
+    min-width: 150px;
+}
+
+#start-menu-content-bttn-container {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -25%);
+    height: auto;
+    max-width: 400px;
+    min-width: 150px;
+    padding: 1px;
+}
+
+#start-menu-content-bttn-container button {
+    width: calc(50% - 3px);
+    position: relative;
+    font-size: 100%;
+}
+
+#blur {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.screen {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.title-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.dialogue-bar {
+    position: fixed;
+    box-sizing: border-box;
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    min-height: 25vh;
+}
+
+.dialogue-box {
+    margin: 5px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100vw;
+    min-height: 50px;
+    height: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.grid-item {
+    min-height: 30px;
+    padding: 4px;
+}
+
+#choice-element {
+    text-align: left;
+    color: white;
+    border: none;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+#choice-element:hover {
+    border-left: 1px solid white;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 450px) {
+    button {
+        font-size: 25px;
+    }
+}

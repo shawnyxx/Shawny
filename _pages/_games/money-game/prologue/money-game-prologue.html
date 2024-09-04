@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/_pages/_games/money-game/prologue/money-game-prologue.style.css">
+</head>
+
+<body>
+
+    <div class="play-menu">
+
+        <audio src="/_pages/_games/money-game/prologue/soundscape/tracks/Hopeless - Jimena Contreras.mp3"
+            id="play-screen-music" autoplay></audio>
+
+        <video autoplay muted loop id="video-background"
+            src="/_pages/_games/money-game/prologue/videos/liberty-statue.mp4" type="video/mp4"></video>
+
+        <video id="video-2-background" src="/_pages/_games/money-game/prologue/videos/money-game-prologue.mp4"></video>
+
+
+
+        <div id="blur">
+
+            <image src="/_pages/_games/money-game/images/icons/the MONEY Game logo.png" id="tabarnak"></image>
+
+
+
+
+
+            <div id="menu-content">
+                <div id="start-menu-content">
+                </div>
+                <div id="start-menu-content-bttn-container">
+                    <button onclick="openAboutUsMenu()">About the devs</button>
+                    <button onclick="window.location.href='/_pages/_games/money-game/prologue/intro/intro.html'">Start the game</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="about-us-window">
+            <button id="about-us-bttn1" onclick="closeAboutUsMenu()">x</button>
+            <button id="about-us-bttn2">x</button>
+            <button id="about-us-bttn3">x</button>
+
+
+            <img src="/_pages/_games/money-game/prologue/images/about-us-window.svg">
+        </div>
+
+    </div>
+
+    <script src="/_pages/_games/money-game/prologue/handle-play-menu.js"></script>
+
+    <script src="/_pages/_games/money-game/prologue/handle-content.js"></script>
+
+    <script src="/_pages/_games/money-game/prologue/money-game-prologue.main.js"></script>
+
+</body>
+
+</html>

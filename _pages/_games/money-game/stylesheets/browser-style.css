@@ -1,0 +1,172 @@
+#browser {
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/computer-wallpaper.jpg);
+    background-size: cover;
+    transition: opacity 0.3s;
+}
+
+#online-browser {
+    box-sizing: border-box;
+    color: white;
+    padding: 0;
+    backdrop-filter: brightness(20%) blur(15px);
+    border-radius: 10px;
+    z-index: 12;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#browser-topbar {
+    box-sizing: border-box;
+    left: 0; top: 0;
+    background-color: transparent;
+    height: 100px; width: 100%;
+    border-radius: 6px;
+}
+
+#browser-title-bar {
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%; height: 25%;
+    border-bottom: 1px solid gray;
+}
+
+#browser-topbar-content {
+    width: 100%; height: 75%;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+}
+
+#browser-content {
+    position: absolute;
+    box-sizing: border-box;
+    top: 100px; left: 0;
+    background-color: transparent;
+    padding: 10px;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
+#web-page-content {
+    box-sizing: border-box;
+    display: block;
+    top: 0; left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: transparent;
+}
+
+.webpage {
+    height: auto;
+    padding: 15px;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+}
+
+
+#browser-searchbar {
+    width: 100%;
+    height: 100%;
+    color: black;
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 10px;
+    background-color: white;
+    text-align: left;
+}
+
+
+#upgrade-menu,
+#property-menu,
+#crypto-gains-menu {
+    display: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(25px);
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 10px;
+    z-index: 12;
+    width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+
+
+#close-browser-bttn {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    left: 5px;
+    top: -5px;
+}
+
+#browser-yellow-bttn {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: yellow;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    left: 25px;
+    top: -5px;
+}
+
+#browser-green-bttn {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    left: 45px;
+    top: -5px;
+}
+
+
+
+.tab-bttn {
+    transform: translate(0, 2px);
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.tab-bttn:disabled {
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#stats-bttn {
+    transform: translate(0, 2px);
+    position: absolute;
+    left: 50px;
+    border: 1px solid white;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#stats-bttn:disabled {
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 4px 4px 0px 0px;
+}
