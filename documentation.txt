@@ -15,9 +15,7 @@ anything, don't hesitate to contact me at shawny@ecxogames.ca or via whatsapp at
 
 First thing I have to say is...
 
-{DO NOT TOUCH ANY OF THE FOLDERS OR FILES THAT IF YOU DON'T KNOW WHAT THEY DO, ACCIDENTALLY DELETING ANY FILES OR FOLDERS COULD RESULT TO THE PROJECT BEING BROKEN.}
-
-
+{DO NOT TOUCH ANY OF THE FOLDERS OR FILES IF YOU DON'T KNOW WHAT THEY DO, ACCIDENTALLY DELETING ANY FILES OR FOLDERS COULD RESULT TO THE PROJECT BEING BROKEN.}
 
 This documentation will help you to work with my code AND to understand how to make it so everyone can read it.
 I am not a big fan of artificial intelligence when it comes to help you with your code but I can allow you to use it (resonnably).
@@ -36,63 +34,57 @@ Symbol chart:
     ~ = should be a read-only file
     ? = should have a *README.md or *README.txt file
 
-
-Function types & naming convention:
-
-    ! dashed-lowercase : Use this for files, folder, ids and classes
-
-    ! pascalCased : Use these for functions
-
-    ! non_capitalized_undescored [OR] noncapitalizedunderscored : Use this for variables
-
-    ! wahtevername_MODULE : Use this for modules
-
-    ! twoword_SEMICAPS : Use this for parameters [ONLY]
-
-    ! CAPITALIZED_FUNCTIONS : Use this for functions that are only triggered once and at first.
-
-
 Files & folders organization:
 
     Naming and organizing the files and folders looks easy. Well it is. If you put things in random places.
     Because will have a lot of files in the project, we need to be organized. And below, you will find the correct way of organizing your files.
 
+    But first, let me tell you about the method...
 
-    But first, let me tell you about our method...
-
-
-    Within the devs, we have a very particular way of organizing the things. You may not be used to it and that is why you will have to read carefuly.
+    Within the devs, we have a very particular way of organizing things. You may not be used to it and that is why you will have to read carefuly the next steps.
 
     Step I:
-        When you create a new project you will need at least three files. Before creating these three files, you will need to create a folder to put them inside. Name the folder whatever youy want, but make it recognizable please.
-        If you put your three files in the MAIN directory of the project or anywhere that you haven't take note of, you will be lost the next time you open Visual Studio and you will be subject to do regretable things. Please, just keep it organized.
-        In the main directory, you can find multiple folders and files. You should, in no terms, use or modify anyhing in the MAIN directory, or anywhere else, that you have not the ownership of, nor create folders or files there.
-        If you do so, it is going to be a mess and I will not hesitate to give you the job of putting things back to normal, which can, in some cases, take days...
+        When you create a new project you will need to create a folder to put it inside. Name the folder whatever youy want, but make it recognizable please.
+        If you put your files in the MAIN directory of the project or anywhere you don't remember, you will be lost the next time you open Visual Studio. Please, keep it organized.
+        In the main directory, you can find multiple folders and files. You should, in no terms, use or modify anyhing in the that is there, or anywhere else.
         Anyway, now that you now why it is important, let's move on to the next step.
-    
+
     Step II:
         You will have to organize you files this way:
-
-            /SHAWNY (MAIN folder)
-                index.html
-                /audio
-                /images
-                /IntroStory
-                /libraries
-                /money-game
-                ...and vice versa...
-                /Your-Project-Name # this is the folder where you need to put you .html .css and .js files. the other files and folders are not necessary, but if you need an audio file, you will need an audio folder. same applies for all the other folders marked below.
-                    index.html [OR] main.html
-                    /audio
-                    /images
-                    /stylesheets
-                        style.css # main css file
-                        style-namespace.css # what the css do (eg. main-menu.css for a style applied to a main menu)
-                    /scripts
-                        /namespace or /name-space # the namespace is just what the scripts in the folder do (eg. /upgrades or /game-upgrades when the namespace has more than one word)
-                        script.js [OR] main.js # main files for your scripts
-                        nameofscript-namespace.js # following the example from above where we have /upgrades as the namespaces... the javascript file should be named money-upgrade.js with the name of the folder at the end. it facilitate the file search process
-                        script-name.js # if you need extra js file, name it so
+            SHAWNY
+            ├── build
+            ├── node_modules
+            ├── OLD
+            │   └── # Old code with all its content
+            ├── public
+            │   ├── files
+            │   │   ├── images
+            │   │   │   ├── icons
+            │   │   │   │   └── # Icons and pictograms
+            │   │   │   └── pictures
+            │   │   │       └── # Images files
+            │   │   └── sounds
+            │   │       └── # SFX and Soundtracks
+            │   ├── index.html
+            │   ├── manifest.json
+            │   └── robot.txt
+            ├── src
+            │   ├── components
+            │   │   └── # Single components to reuse
+            │   ├── pages
+            │   │   └── # Pages
+            │   ├── App.test.js
+            │   ├── index.css
+            │   ├── index.js
+            │   ├── Main.css
+            │   ├── Main.js
+            │   ├── reportWebVitals.js
+            │   └── setupTests.js
+            ├── .gitignore
+            ├── documentation
+            ├── package-lock.json
+            ├── package.json
+            └── README.md
     
     Setp III:
         Now that you have your files organized, you can start creating your project. Be creative ;P
@@ -104,12 +96,30 @@ Section III : Ressources
     
     Here are some good extensions for Visual Studio Code that could help you with your project:
 
-            Blackboxapp.blackbox    #  This extension will help you to debug your code. It is very useful when you are trying to find the source of a bug. Also useful to piss me off.
-        {To install an extension, just copy the extention ID and paste it in the search bar in the extension panel on the left of Visual Studio Code's interface. The icon should look like puzzle pieces.}
-            ParthR2031.colorful-comments    #  This extension will help you to color your comments. It is very useful when you are trying to organize and colorize you code.
-            mgiesen.image-comments  #   This extension will help you to add images to your comments. It is very useful when you are trying to show things in your code. I don't know why I use it, but it could be useful.
-            ritwickdey.LiveServer   #   You will need to use this plugin to debug. Use this instead of pushing changes to the website. While being faster than waiting for the changes to be published, you can also see changes in real time right into VS Code. If you have the option of using the VS Code application, please consider using this otherwise the website run out of build times.
-            awesomektvn.toggle-semicolon    #    This extension will help you to toggle the semicolon. Nothing else to say.
-            xshrim.txt-syntax   #    This extension will help you to change the syntax of the text. Very useful for editing text files.
+            Blackboxapp.blackbox
+            ParthR2031.colorful-comments
+            mgiesen.image-comments
+            ritwickdey.LiveServer
+            xshrim.txt-syntax
 
-Section VI : Coming soon
+Section VI : Data storage
+
+    All of the data is stored on a json bin under this id: 00244aa6-72b3-4199-9aa2-26eb154b67f1 
+    You can access the data by going to the following link: https://getpantry.cloud/
+
+
+
+Section VII : Schedule
+
+    Here is the list of the tasks that are dues and the ones that are coming up:
+
+    Mandatory:
+        - Remake the whole site in React JS. (Everything but the games, I'll take care of that)
+    Urgent:
+        - Work out a friendly way to manage the data.
+    Important:
+        - Work around the code to make it more readable for the new developers. And make sure to document the code in this documentation.
+        - Remake all the readme files to make them more readable and understandable.
+    If you're bored:
+        - Find a way to give the ability to the user to change the language of the website.
+        - Add modding capabilities to the game.

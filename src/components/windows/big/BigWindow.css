@@ -1,0 +1,55 @@
+.BigWindow {
+    position: absolute;
+    z-index: 10;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.BigWindow:hover {
+    cursor: grab;
+}
+
+.BigWindowContent {
+    background: black;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.BigWindowButtonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transform: translateY(-20px);
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+   
+    .BigWindowContent {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        font-size: normal;
+    }
+
+    .BigWindowButtonsContainer {
+        transform: translateY(-75px);
+    }
+}
+
+/* Desktops */
+@media (min-width: 768px) {
+    .BigWindowContent {
+        width: 1200px;
+        height: 600px;
+        font-size: large;
+    }
+}
