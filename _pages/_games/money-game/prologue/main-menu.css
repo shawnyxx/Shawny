@@ -10,6 +10,10 @@
     -moz-user-select: none;
 }
 
+.draggable {
+    cursor: grab;
+}
+
 img {
     pointer-events: none;
 }
@@ -47,29 +51,6 @@ video {
     z-index: 0;
 }
 
-/* ^ Main menu */
-
-@media only screen and (max-width: 480px) {
-    #title {
-        font-family: 'Raleway';
-        font-weight: 900;
-        text-align: center;
-        color: white;
-        font-size: 25px;
-        margin-bottom: 0;
-    }
-}
-
-@media only screen and (min-width: 480px) {
-    #title {
-        font-family: 'Raleway';
-        font-weight: 900;
-        text-align: center;
-        color: white;
-        font-size: 100px;
-        margin: 0;
-    }
-}
 
 #blur {
     position: absolute;
@@ -133,6 +114,14 @@ video {
         overflow-y: hidden;
         overflow: visible;
     }
+    #title {
+        font-family: 'Raleway';
+        font-weight: 900;
+        text-align: center;
+        color: white;
+        font-size: 25px;
+        margin-bottom: 0;
+    }
 }
 
 /* Desktop */
@@ -154,6 +143,14 @@ video {
         position: absolute;
         overflow: visible;
     }
+    #title {
+        font-family: 'Raleway';
+        font-weight: 900;
+        text-align: center;
+        color: white;
+        font-size: 100px;
+        margin: 0;
+    }
 }
 
 #scroll {
@@ -171,4 +168,5 @@ video {
     bottom: 0;
     transform: translate(0, 15px);
     justify-content: center;
+    pointer-events: all;
 }

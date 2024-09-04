@@ -1,197 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Shawny</title>
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="icon" type="image/png" href="/_files/images/logos/shawny512.png" />
+		<link rel="apple-touch-icon" href="/_files/images/logos/shawny512.png" />
+		<link rel="stylesheet" href="main.css">
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Shawny</title>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="/_files/images/logos/shawny512.png">
-    <link rel="apple-touch-icon" href="/_files/images/logos/shawny512.png">
-    <style>
-        body,
-        html {
-            scrollbar-width: none;
-            margin: 0;
-            padding: 25px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            overflow: hidden;
-            font-family: Arial;
-        }
+	<body>
+		<div class="starry-sky-overlay">
+			<p id="playText">click anywhere to start...</p>
+		</div>
+		<content>
+			<div class="background"></div>
 
-        .background {
-            position: fixed;
-            background-color: black;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
+			<button id="settings-bttn" onclick="openCloseSettings()">⚙️</button>
 
-        .circle {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: white;
-            border-radius: 50%;
-        }
+			<div id="settings-window">
+				<h2>Settings</h2>
+				<settings id="settings">
+					<h4>Can help in some recent updates</h4>
+					<p onclick="resetData()" style="color: white; cursor: pointer; text-decoration: underline">Reset Progress</p>
+					
+					<h4>You want to install the app locally? We got a portable version</h4>
 
-        .container {
-            display: grid;
-            grid-auto-flow: column;
-            grid-gap: 30px;
-            padding: 20px;
-            height: 250px;
-            overflow-x: auto;
-            justify-items: center;
-            align-items: center;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            z-index: 1;
-        }
+					<a href="/shawny-beta-client.zip" target="_blank" download="shawny-beta-client.zip" style="color: white">📁 Download Portable Client (.zip)</a>
 
-        .level {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            width: 180px;
-            height: 180px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(5px);
-            scroll-snap-align: center;
-        }
+					<br /><br />
 
-        .level::before {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-        }
+					<h4>Want to know more about us? Visit our website</h4>
+					<a href="https://ecxogames.ca" target="_blank" style="color: white">🎮 ecxogames.ca</a>
 
-        .level:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.6);
-            border-color: rgba(0, 255, 255, 0.8);
-        }
+					<br /><br />
 
-        .container::-webkit-scrollbar {
-            height: 10px;
-        }
+					<h4>Do we have a GitHub repo? Yes, we do</h4>
+					<a href="https://github.com/shawnyxx/Shawny/tree/main" target="_blank" style="color: white">For Stable Releases</a>
+					<br />
+					<a href="https://github.com/shawnyxx/Shawny/tree/experimental" target="_blank" style="color: white">For Experimental Releases</a>
 
-        .container::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-        }
+					<br />
 
-        .container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
+					<h4>Interested in contributing to the project? Contact Us</h4>
+					<a href="mailto:work@ecxogames.ca" target="_blank" style="color: white">✉️ Contact us</a>
+					<p>email: work@ecxogames.ca</p>
 
-        /* Example content */
-        .content {
-            position: relative;
-            padding: 20px;
-            z-index: 1;
-            /* Make sure the content is above the background */
-        }
+					<br /><br />
 
-        .starry-sky-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            /* Black with 80% opacity */
-            z-index: 1000;
-            /* Ensure it appears on top of other elements */
-        }
+					<p onclick="alert('Credits\nIcons: Icon8.com\nMusic: Youtube Free Sounds Library\nSFX: Pixabay')" style="color: white; cursor: pointer; text-decoration: underline">Credits</p>
+				</settings>
 
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: twinkle 2s infinite ease-in-out;
-        }
+				<p style="position: absolute; bottom: 0; font-size: small">* Click on the settings icon again to close the settings</p>
+			</div>
 
-        @keyframes twinkle {
+			<div class="container">
+				<div class="level" style="background-image: url('/_main/images/click-balls-logo.png')" onclick="window.location.href='/_pages/_games/click-balls/click-balls.html'"></div>
+				<div class="level" style="background-image: url('/_main/images/money-game-logo.png')" onclick="window.location.href='/_pages/_games/money-game/prologue/money-game-prologue.html'"></div>
+				<div class="level" style="background-image: url('/_main/images/the-disturbance-logo.png')" onclick="window.location.href='/_pages/_games/intro-story/IntroStory.html'"></div>
+			</div>
 
-            0%,
-            100% {
-                opacity: 0.8;
-            }
+			<a href="/ShawnyBetaInstaller.exe" id="download-client" download="ShawnyBetaInstaller.exe" class="download-button">Download Client</a>
+			<p id="version">V.0.0.1.2 - Game Rework Update #2</p>
+		</content>
 
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        #playText {
-            color: white;
-            font-family: Arial;
-            text-align: center;
-            margin-top: 85vh;
-        }
-
-        #musicName {
-            position: fixed;
-            bottom: 0;
-            text-align: center;
-        }
-
-        #version {
-            position: fixed;
-            bottom: 0;
-            right: 15px;
-            text-align: right;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="starry-sky-overlay">
-        <p id="playText">click anywhere to start...</p>
-    </div>
-
-    <audio id="mainmenumusic" muted loop>
-        <source src="/_main/audio/mainmenumusic.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="background"></div>
-
-    <div class="container">
-        <div class="level" style="background-image: url('/_main/images/click-balls-logo.png');"
-            onclick="window.location.href='/_pages/_games/click-balls/click-balls.html'"></div>
-        <div class="level" style="background-image: url('/_main/images/money-game-logo.png');"
-            onclick="window.location.href='/_pages/_games/money-game/prologue/money-game-prologue.html'"></div>
-        <div class="level" style="background-image: url('/_main/images/the-disturbance-logo.png');"
-            onclick="window.location.href='/_pages/_games/intro-story/IntroStory.html'"></div>
-        <!-- <div class="level" style="background-image: url('');" onclick="window.location.href=''"></div> -->
-    </div>
-
-    <!-- <p id="musicName">Song: Missing Persons by Jeremy Blake</p> -->
-    <p id="version">V.0.0.1.12 - Game Rework Update</p>
-
-    <script src="/_main/main.js"></script>
-
-</body>
-
+		<script src="/data.js"></script>
+		<script src="/_public/libraries/controls.js"></script>
+		<script src="/_public/libraries/notification.js"></script>
+		<script src="/_public/libraries/public-library.js"></script>
+		<script src="/_main/main.js"></script>
+		<script src="/_public/libraries/window-creator.js"></script>
+	</body>
 </html>

@@ -10,6 +10,14 @@
     text-align: center;
 }
 
+container {
+    width: 100%;
+}
+
+space {
+    width: 100%;
+    min-height: 25px;
+}
 
 .inline-block {
     display: inline-block;
@@ -41,12 +49,19 @@
     background-color: transparent;
     border: none;
     text-decoration: underline;
-    color: #4897FF;
+    color: #4897ff;
 }
 
+.draggable {
+    cursor: grab;
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
     button {
         font-size: 7px;
+    }
+
+    p {
+        font-size: 13px;
     }
 }

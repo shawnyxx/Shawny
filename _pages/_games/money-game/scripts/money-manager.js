@@ -1,4 +1,6 @@
 
+let taxes = null;
+
 function doTaxes() {
     const tax_rate = Math.random(25 - 10) + 10;
     const tax_amount = money * (tax_rate / 100);
@@ -8,6 +10,7 @@ function doTaxes() {
         monthly_profit -= tax_amount;
         addAction(`You payed $${shortenMoneyDisplay(tax_amount)} in taxes (${tax_rate.toFixed(0)}%)`);
         doNotification(`This year, you paid ${shortenMoneyDisplay(tax_amount)} in taxes.`, 'white', 'purple')
+        taxes = tax_amount;
     }
 }
 
@@ -22,4 +25,8 @@ function doInterest() {
    } else {
     interest_rate = 1.1;
    }
+}
+
+function doSalary(value) {
+    return value / 12 / 4 / working_hours;
 }

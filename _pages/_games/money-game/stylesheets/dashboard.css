@@ -9,18 +9,32 @@
     background-color: none;
     border: none;
     position: absolute;
-    top: -150px;
-    left: 0;
+    top: -100px;
+    left: 25px;
     font-size: 30px;
     background-image: url('/_pages/_games/money-game/images/rope-icon.png');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 75px;
-    height: 200px;
+    height: 100px;
+    scale: 2.5;
+    width: fit-content;
+    margin: 0;
     transition: ease-in-out 0.3s;
 }
 
 #suicide-button:hover {
     top: -15px;
+}
+
+
+#month-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 0;
+    max-width: 150px;
+    height: 5px;
+    border-radius: 5px;
+    background: gainsboro;
 }

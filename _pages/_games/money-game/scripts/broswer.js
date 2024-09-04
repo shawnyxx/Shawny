@@ -1,14 +1,19 @@
-
+const browser = document.getElementById('browser');
 
 // ^ Open/Close browser
 function openBrowser() {
-    showhideTag('browser', 'grid');
+    browser.style.display = 'block';
+    browser.classList.add('open');
+    browser.style.scale = '1';
+    browser.classList.remove('close');
 }
 
 function closeBrowser() {
-    showhideTag('browser', 'none');
+    browser.classList.add('close');
+    browser.classList.remove('open');
 }
 
+closeBrowser();
 
 // ^ Stats tab
 function viewStats() {
@@ -20,6 +25,12 @@ function viewStats() {
     closeHousingMarket();
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Tab') {
+        openBrowser();
+    }
+})
+
 function closeStats() {
     showhideTag('stats', 'none');
     document.getElementById('stats-bttn').disabled = false;
@@ -28,7 +39,7 @@ function closeStats() {
 
 // ^ Investments tab
 function viewInvestments() {
-    showhideTag('crypto');
+    showhideTag('crypto', 'flex');
     document.getElementById('crypto-bttn').disabled = true;
     closeStats();
     closeHousingMarket();
@@ -43,7 +54,7 @@ function closeInvestments() {
 
 // ^ Housing market tab
 function viewHousingMarket() {
-    showhideTag('housingmarket');
+    showhideTag('housingmarket', 'flex');
     document.getElementById('property-bttn').disabled = true;
 
     closeStats();
@@ -71,3 +82,8 @@ function closeServices() {
     showhideTag('services', 'none');
     document.getElementById('services-bttn').disabled = false;
 }
+
+
+closeHousingMarket();
+closeInvestments();
+closeServices();

@@ -1,54 +1,16 @@
-const notification_container = document.createElement('div');
-notification_container.style.zIndex = 50;
-notification_container.style.position = 'absolute';
-notification_container.style.bottom = '15px';
-notification_container.style.right = '15px';
-notification_container.style.width = '300px';
-notification_container.style.height = 'auto';
-notification_container.style.backgroundColor = 'none';
-notification_container.style.pointerEvents = 'none';
-document.body.appendChild(notification_container);
+// Disclaimer!! If you don't understand these functions, do not touch them, they are advanced algorithms made to save memory and reduce load on the server...
 
+const notification_container = document.body.appendChild(document.createElement('div'));
+notification_container.style.cssText = 'z-index:50;position:absolute;bottom:15px;right:15px;width:300px;height:auto;pointer-events:none';
 
-function doNotification(text_to_write, color, border_color) {
+const doNotification = (text, color = 'white', border = 'white') => {
     const notification = document.createElement('div');
-    notification.style.width = '300px';
-    notification.style.height = 'auto';
-    notification.style.minHeight = '50px';
-    notification.style.right = '0';
-    notification.style.bottom = '0';
-    notification.style.marginTop = '5px';
-    notification.style.background = 'rgba(24, 24, 24, 0.5)';
-
-    if (border_color === undefined) {
-        notification.style.borderLeft = '4px solid white';
-    } else {
-        notification.style.borderLeft = `4px solid ${border_color}`
-    }
-
-    notification.style.padding = '4px';
-
-    notification.style.display = 'flex';
-    notification.style.justifyContent = 'center';
-    notification.style.alignItems = 'center';
-
-    if (color === undefined) {
-        notification.style.color = 'white';
-    } else {
-        notification.style.color = color;
-    }
-
-    notification.textContent = text_to_write;
-
-    notification.style.zIndex = '100';
-    notification.style.transition = 'opacity 0.5s';
-
+    notification.style.cssText = `width:300px;min-height:50px;margin-top:5px;background:rgba(24,24,24,0.5);
+                                  border-left:4px solid ${border};padding:4px;display:flex;
+                                  justify-content:center;align-items:center;color:${color};z-index:100;
+                                  transition:opacity 0.5s`;
+    notification.textContent = text;
+    audioPlay("/_files/audio/notification-sound.mp3")
     notification_container.appendChild(notification);
-
-    setTimeout(() => {
-        notification.style.opacity = 0;
-        setTimeout(() => {
-            notification_container.removeChild(notification);
-        }, 500); // wait for the fade out transition to finish
-    }, 5000);
-}
+    setTimeout(() => (notification.style.opacity = 0, setTimeout(() => notification.remove(), 500)), 5000);
+};

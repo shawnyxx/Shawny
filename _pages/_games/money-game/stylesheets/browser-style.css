@@ -1,13 +1,28 @@
 browser {
   position: absolute;
-  display: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: url(../images/computer-wallpaper.jpg);
+
+  transition: opacity 0.3s;
   background-size: cover;
+
+
 }
+
+crypto {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+crypto container {
+  display: flex;
+}
+
+
 
 browserblur {
   position: absolute;
@@ -38,10 +53,11 @@ browsercontainer {
 
 browsertopbar {
   grid-area: browser-topbar;
-  background-color: black;
+  background: black;
   border-bottom: 1px solid white;
   display: flex;
   place-items: center;
+  height: 35px;
   padding: 2px;
 }
 
@@ -63,6 +79,7 @@ housingmarket,
 crypto {
   display: none;
   color: white;
+  background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(25px);
   border: 1px solid white;
   border-radius: 6px;
@@ -77,6 +94,10 @@ crypto {
 
 .tab-bttn {
   transform: translate(0, 6px);
+  padding: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
   border: 1px solid white;
   border-radius: 4px 4px 0px 0px;
 }
@@ -87,21 +108,27 @@ crypto {
   border-radius: 4px 4px 0px 0px;
 }
 
-@media (max-width: 769px) { /* Changed to 769px */
-  .tab-bttn {
-    margin-left: 1px;
-  }
+#stats-bttn,
+#services-bttn,
+#property-bttn,
+#crypto-bttn {
+  left: 50px;
+  border: 1px solid white;
+  border-radius: 4px 4px 0px 0px;
 }
 
-@media (max-width: 768px) {
-  .tab-bttn {
-    left: 5px;
-  }
+#stats-bttn:disabled,
+#services-bttn:disabled,
+#property-bttn:disabled,
+#crypto-bttn:disabled {
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 4px 4px 0px 0px;
 }
-
 
 /* ^ Stats */
 stats {
+  background-color: #00000099;
   backdrop-filter: blur(25px);
   border: 1px solid white;
   border-radius: 6px;
@@ -126,16 +153,14 @@ stats {
 statsheader {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  gap: 15px;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "month" "age";
   grid-area: statsheader;
 }
 
 statscontent {
-  font-size: 10px;
-  display: block;
   grid-area: statscontent;
 }
 
@@ -147,101 +172,70 @@ statscontent {
   grid-area: age;
 }
 
-/* Services */
-@media (min-width: 768px) {
+grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: auto;
+}
+
+card {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+  justify-content: start;
+  cursor: pointer;
+}
+
+cardtitle, cardtextcontainer {
+  color: white;
+  text-align: left;
+  line-height: 20px;
+}
+
+cardtitle {
+  display: flex;
+  align-items: flex-end;
+  grid-column: span 2;
+}
+
+cardemoji {
+  border: 1px solid white;
+  background-color: black;
+  border-radius: 6px;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+}
+
+cardtextcontainer {
+  display: flex;
+  font-size: 13px;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
   grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: auto;
+    grid-template-columns: 1fr;
   }
 
-  card {
-    position: relative;
-    width: 100%;
-    padding: 10px;
-    display: grid;
-    gap: 10px;
-    justify-content: start;
-    cursor: pointer;
-  }
-
-  cardtitle {
-    color: white;
-    text-align: left;
-    display: flex;
-    align-items: flex-end;
-    grid-column: span 2;
-    line-height: 20px;
+  .tab-bttn {
+    scale: 1.2;
+    gap: 6px;
   }
 
   cardemoji {
-    border: 1px solid white;
-    background-color: black;
-    border-radius: 6px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    width: 100px;
+    width: 80px;
+    height: 80px;
   }
 
-  cardtextcontainer {
-    color: white;
-    text-align: left;
-    display: flex;
-    font-size: 13px;
-    line-height: 20px;
-    flex-direction: column;
+  cardtextcontainer p {
+    font-size: 10px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  grid {
-    display: grid;
-    gap: 10px;
-  }
-
-  card {
-    position: block;
-    width: 100%;
-    padding: 10px;
-    display: grid;
-    gap: 10px;
-    justify-content: left;
-    cursor: pointer;
-  }
-
-  cardtitle {
-    color: white;
-    text-align: left;
-    font-weight: bold;
-    display: flex;
-    align-items: flex-end;
-    grid-column: span 2;
-    line-height: 20px;
-  }
-
-  cardemoji {
-    border: 1px solid white;
-    background-color: black;
-    border-radius: 6px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    width: 100px;
-  }
-
-  cardtextcontainer {
-    color: white;
-    text-align: left;
-    display: flex;
-    font-size: 8px;
-    line-height: 20px;
-    flex-direction: column;
-  }
-
-}

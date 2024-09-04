@@ -35,7 +35,13 @@ span p {
   display: inline;
 }
 
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 body {
+  overscroll-behavior: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;

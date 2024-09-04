@@ -1,38 +1,31 @@
+// Disclaimer!! If you don't understand these functions, do not touch them, they are advanced algorithms made to save memory and reduce load on the server...
 
-function doPercentage(value, fixRate) {
-    return (value / 100).toFixed(fixRate) + '%';
-}
-
+// Turn money into a more american number
 function doMoneyNotation(value) {
-    if (value < 10000000000000000) {
-        return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    } else {
-        return '∞';
+    if (value !== null) {
+        if (value < 10000000000000000) {
+            return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        } else {
+            return '∞';
+        }
     }
 }
 
+// Turn money notation into an even more american number
 function shortenMoneyDisplay(amount) {
-    if (amount >= 1000000000000000) {
-        return (amount / 1000000000000000).toFixed(1) + 'Q';
-    } else if (amount >= 1000000000000) {
-        return (amount / 1000000000000).toFixed(1) + 'T';
-    } else if (amount >= 1000000000) {
-        return (amount / 1000000000).toFixed(1) + 'B';
-    } else if (amount >= 1000000) {
-        return (amount / 1000000).toFixed(1) + 'M';
-    } else if (amount >= 1000) {
-        return (amount / 1000).toFixed(1) + 'k';
-    } else if (amount <= -1000000000000000) {
-        return (amount / 1000000000000000).toFixed(1) + 'Q';
-    } else if (amount <= -1000000000000) {
-        return (amount / 1000000000000).toFixed(1) + 'T';
-    } else if (amount <= -1000000000) {
-        return (amount / 1000000000).toFixed(1) + 'B';
-    } else if (amount <= -1000000) {
-        return (amount / 1000000).toFixed(1) + 'M';
-    } else if (amount <= -1000) {
-        return (amount / 1000).toFixed(1) + 'k';
-    } else {
-        return doMoneyNotation(amount);
+    const absAmount = Math.abs(amount);
+    const units = [
+        { value: 1e15, suffix: 'Q' },
+        { value: 1e12, suffix: 'T' },
+        { value: 1e9, suffix: 'B' },
+        { value: 1e6, suffix: 'M' },
+        { value: 1e3, suffix: 'k' },
+    ];
+
+    for (const unit of units) {
+        if (absAmount >= unit.value) {
+            return (amount / unit.value).toFixed(1) + unit.suffix;
+        }
     }
+    return doMoneyNotation(amount);
 }

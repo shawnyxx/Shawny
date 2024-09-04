@@ -1,112 +1,87 @@
+// For any function that updates the elements on the stats menu, use update + NameOfElement + Element + ()
+// For example, for a function  that updates the the net worth info on the stats menu, use updateNetWorthElement()
 
-function updateStats() {
-  const time = document.getElementById("time-of-year");
-  const age = document.getElementById("age");
+// References to elements IDs
+const time_element = document.getElementById("time-of-year");
+const age_element = document.getElementById("age");
+const net_worth_element = document.getElementById("net-worth");
+const salary_element = document.getElementById("salary");
+const tax_element = document.getElementById('last-taxes');
+const interest_text = document.getElementById('interest');
+const total_property_element = document.getElementById("total-properties");
+const monthly_profit_element = document.getElementById("last-month-profit");
 
-  time.textContent = `Current month: ${month[month_index]}`;
-  age.textContent = `You have existed for: ${year} year(s) and ${
-    month_index - 1
-  } months.`;
+// Update the time counter
+function updateTimeElement() {
+  time_element.textContent = `Current month: ${months[month_index]}`;
+  age_element.textContent = `You have existed for: ${year} year(s) and ${month_index} months.`;
 }
 
-function updateNetWorth() {
-  let net_worth = document.getElementById("net-worth");
-
-  total_net_worth = money + total_property_value;
-
-  net_worth.style.color = "Green";
-  net_worth.textContent = `${doMoneyNotation(total_net_worth)}`;
+// Update the net worth element
+function updateNetWorthElement() {
+  total_net_worth = money + total_property_value + bank_account_holdings;
+  net_worth_element.style.color = "Green";
+  net_worth_element.textContent = `${doMoneyNotation(total_net_worth)}`;
 }
 
-function updateFinancialReport() {
-  let last_month_profit = document.getElementById("last-month-profit");
-
+// Update the monthly profit element
+function updateMonthlyProfitElement() {
   if (monthly_profit > 0) {
-    last_month_profit.style.color = "green";
+    monthly_profit_element.style.color = "green";
   } else if (monthly_profit < 0) {
-    last_month_profit.style.color = "red";
+    monthly_profit_element.style.color = "red";
   }
-
-  last_month_profit.textContent = `${doMoneyNotation(monthly_profit)}`;
+  monthly_profit_element.textContent = `${doMoneyNotation(monthly_profit)}`;
 }
 
-function updateSalary() {
-  const salary = document.getElementById("salary");
-  salary.style.color = "green";
-  salary.textContent = `${shortenMoneyDisplay(money_per_tap)} per tap`;
+// Update the the salary element
+function updateSalaryElement() {
+  if (money_per_tap > 0) {
+    salary_element.style.color = "red";
+    salary_element.textContent = `🏴‍☠️ ${shortenMoneyDisplay(money_per_tap + salary)} 🏴‍☠️`;
+  } else {
+    salary_element.style.color = "green";
+    salary_element.textContent = `${doMoneyNotation(salary)}`;
+  }
 }
 
-function updateProfile() {
-  let total_properties = document.getElementById("total-properties");
-  total_properties.textContent = `🏡 Total Properties: (${
-    bought_properties.length
-  }) Total value: ${shortenMoneyDisplay(total_property_value)}`;
+// Update the bought properties element
+function updateBoughtPropertiesElement() {
+  total_property_element.textContent = `🏡 Total Properties: (${bought_properties.length}) Total value: ${shortenMoneyDisplay(total_property_value)}`;
 }
 
-function setServices() {
-  addCard(
-    "School/Degree",
-    "🎓",
-    "Level: High School",
-    "Cost to enroll: None",
-    "Time to finish: 5 years",
-    "Promised salary: 11$/taps",
-    "rgb(0, 255, 0)",
-    undefined,
-    undefined,
-    undefined,
-    "commingSoon"
-  );
-  addCard(
-    "Start a business",
-    "💼",
-    "Business types:",
-    "Scamming agency: $2 to $50k per tap",
-    "Retail Store: $90k to $300k per month",
-    "Car Shop: $50k to $550k per months",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 0)",
-    "commingSoon"
-  );
-  addCard(
-    "Buy a property",
-    "🏠",
-    "You want to buy a house, or a planet",
-    "Properties available for all budget",
-    "See you on buyahouse.app",
-    undefined,
-    undefined,
-    undefined,
-    "rgb(0, 255, 0)",
-    undefined,
-    "openPropertyMenu"
-  );
-  addCard(
-    "Investments",
-    "📈",
-    "Maximum gain: 70%",
-    "Maximum loss: -40%",
-    undefined,
-    undefined,
-    "rgb(0, 255, 0)",
-    "rgb(255, 0, 0)",
-    undefined,
-    undefined,
-    "viewCryptoGains"
-  );
-  addCard(
-    "Job",
-    "⚒️",
-    "Paychecks depends on your salary",
-    "Increases the money made per taps",
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    "getJob"
-  );
+// Update the taxes element
+function updateTaxElement() {
+  tax_element.innerText = `${doMoneyNotation(taxes)}`;
+}
+
+// Update the interest element
+function updateInterestElement() {
+  interest_text.innerText = `${doMoneyNotation(interest)}`;
+}
+
+// Update the studies element
+function updateStudiesElement(action) {
+  if (action == undefined) {
+    return;
+  } else if (action == "update degree progress") {
+    const studies_element = document.getElementById('studies');
+
+    if (isStudying) {
+      studies_element.textContent = `Studying ${degree_data.name} in ${degree_data.field} (${degree_data.length} years and ${12 - month_index} months left)`;
+    } else {
+      studies_element.textContent = "Not studying";
+    }
+  }
+}
+
+// Update the stats menu with updated information
+function updateStatsMenu() {
+  updateTimeElement();
+  updateNetWorthElement()
+  updateMonthlyProfitElement();
+  updateSalaryElement();
+  updateBoughtPropertiesElement();
+  updateTaxElement();
+  updateInterestElement();
 }
