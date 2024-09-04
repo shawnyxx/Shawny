@@ -1,0 +1,261 @@
+/* Global window settings */
+popupcontainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.window {
+    position: absolute;
+    z-index: 15;
+    display: flex;
+    width: 100vw;
+    top: 35px;
+    height: calc(100vh - 35px);
+    scale: 0;
+    background: black;
+    transition: scale ease 0.5s;
+}
+
+/* Business window */
+#business-window {
+    display: none;
+}
+
+
+/* Crypto window */
+#crypto-gains-window {
+    overflow: hidden;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#cryptoChart-container {
+    display: flex;
+    height: 250px;
+    justify-content: center;
+}
+
+#cryptoChart {
+	padding: 15px;
+	width: 100%;
+	height: 100%;
+}
+
+#crypto-gains-menu-list {
+    overflow-y: hidden;
+    height: 25px;
+    transition: ease 0.5s;
+}
+
+#crypto-gains-menu-list:hover {
+    overflow-y: scroll;
+    height: 200px;
+}
+
+#crypto-gains-menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Properties window */
+propertywindow {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: none;
+
+    min-width: 300px;
+    width: 50%;
+    height: 300px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 6px;
+
+    
+}
+
+#close-manage-property-window-button {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background-color: red;
+    border: none;
+    border-radius: 100%;
+    padding: 8px;
+    color: red;
+}
+
+#property-window-content {
+    width: 100%;
+    max-height: 75%;
+    padding: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#property-element {
+    display: flex;
+    background-color: black;
+}
+
+#house-type-container {
+    width: 75%;
+    height: 50px;
+    background-color: none;
+    margin: 5px;
+}
+
+#house-control-buttons {
+    width: 25%;
+    height: 50px;
+    background-color: none;
+    margin: 5px;
+}
+
+#sell-house-button {
+    background-color: green;
+    width: 100%;
+}
+
+#sell-house-button::after {
+    background-color: rgb(0, 50, 0);
+}
+
+#dragg {
+    border-bottom: 1px solid white;
+    cursor: move;
+}
+
+
+
+/* Degree window */
+#degree-window {
+    display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.degree-menu-element {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#choose-degree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+#degree-menu-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+#degree-list {
+    overflow-y: scroll;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.degreecard {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    border: 1px solid white;
+    border-radius: 6px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.degreecard p {
+    padding: 0;
+}
+
+#degree-title,
+#degree-price,
+#degree-length {
+    width: 100%;
+    padding: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+emoji {
+    font-size: 40px;
+}
+
+@media (max-width: 768px) {
+    .degreecard {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        border: 1px solid white;
+        border-radius: 6px;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .degreecard p {
+        font-size: 8px;
+    }
+}
+
+
+/* Notebook */
+#notebook {
+    width: 90%;
+    height: 90%;
+    background: black;
+    padding: 15px;
+    border: 1px solid black;
+    color: white;
+    transition: ease 0.3s;
+    outline: none;
+    resize: none;
+    
+}
+
+#notebook:focus {
+    border-color: black;
+    color: yellow;
+    transition: ease 0.3s;
+    text-shadow: 0 0 10px yellow;
+}
+
+#notebook::placeholder {
+    color: #aaa;
+}
+
+#notebook:focus::placeholder {
+    color: #aaa;
+    text-shadow: none;
+}
