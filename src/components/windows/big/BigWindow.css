@@ -1,0 +1,52 @@
+
+.BigWindow:hover {
+    cursor: grab;
+}
+
+.BigWindowContent {
+    background: black;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+   
+    .BigWindowContent {
+        width: 65vw;
+        height: 75vh;
+        overflow-y: visible;
+        font-size: normal;
+    }
+    
+    .BigWindowButton {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 18px);
+    }
+}
+
+/* Desktops */
+@media (min-width: 768px) {
+    .BigWindowContent {
+        width: 1200px;
+        height: 600px;
+        overflow-y: visible;
+        font-size: large;
+    }
+
+    .BigWindowButton {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 18px;
+    }
+}

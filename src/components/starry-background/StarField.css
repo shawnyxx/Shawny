@@ -1,0 +1,6 @@
+.StarryBackground {
+  z-index: 10;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Shawny</title>
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="icon" type="image/png" href="/_files/images/logos/shawny512.png" />
+		<link rel="apple-touch-icon" href="/_files/images/logos/shawny512.png" />
+		<link rel="stylesheet" href="main.css">
+	</head>
+
+	<body>
+		<div class="starry-sky-overlay">
+			<p id="playText">click anywhere to start...</p>
+		</div>
+		<content>
+			<div class="background"></div>
+
+			<button id="settings-bttn" onclick="openCloseSettings()">⚙️</button>
+
+			<div id="settings-window">
+				<h2>Settings</h2>
+				<settings id="settings">
+					<h4>Can help in some recent updates</h4>
+					<p onclick="resetData()" style="color: white; cursor: pointer; text-decoration: underline">Reset Progress</p>
+					
+					<h4>You want to install the app locally? We got a portable version</h4>
+
+					<a href="/shawny-beta-client.zip" target="_blank" download="shawny-beta-client.zip" style="color: white">📁 Download Portable Client (.zip)</a>
+
+					<br /><br />
+
+					<h4>Want to know more about us? Visit our website</h4>
+					<a href="https://ecxogames.ca" target="_blank" style="color: white">🎮 ecxogames.ca</a>
+
+					<br /><br />
+
+					<h4>Do we have a GitHub repo? Yes, we do</h4>
+					<a href="https://github.com/shawnyxx/Shawny/tree/main" target="_blank" style="color: white">For Official Releases</a>
+					<br />
+					<a href="https://github.com/shawnyxx/Shawny/tree/experimental" target="_blank" style="color: white">For Experimental Releases</a>
+
+					<br /><br />
+
+					<hr />
+
+					<h4>Interested in contributing to the project? Contact Us</h4>
+					<a href="mailto:work@ecxogames.ca" target="_blank" style="color: white">✉️ Contact us</a>
+					<p>email: work@ecxogames.ca</p>
+
+					<br /><br />
+
+					<p onclick="alert('Credits\nIcons: Icon8.com\nMusic: Youtube Free Sounds Library\nSFX: Pixabay')" style="color: white; cursor: pointer; text-decoration: underline">Credits</p>
+				</settings>
+
+				<p style="position: absolute; bottom: 0; font-size: small">* Click on the settings icon again to close the settings</p>
+			</div>
+
+			<div class="container">
+				<div class="level" style="background-image: url('/_main/images/click-balls-logo.png')" onclick="window.location.href='/_pages/_games/click-balls/click-balls.html'"></div>
+				<div class="level" style="background-image: url('/_main/images/money-game-logo.png')" onclick="window.location.href='/_pages/_games/money-game/prologue/money-game-prologue.html'"></div>
+				<div class="level" style="background-image: url('/_main/images/the-disturbance-logo.png')" onclick="window.location.href='/_pages/_games/intro-story/IntroStory.html'"></div>
+			</div>
+
+			<a href="/ShawnyBetaInstaller.exe" download="ShawnyBetaInstaller.exe" class="download-button">Download Beta Client</a>
+			<p id="version">V.0.0.1.2 - Game Rework Update #2</p>
+		</content>
+
+		<script src="/data.js"></script>
+		<script src="/_public/libraries/controls.js"></script>
+		<script src="/_public/libraries/notification.js"></script>
+		<script src="/_public/libraries/public-library.js"></script>
+		<script src="/_main/main.js"></script>
+		<script src="/_public/libraries/window-creator.js"></script>
+	</body>
+</html>

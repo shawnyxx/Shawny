@@ -1,0 +1,8 @@
+header {
+    width: 100vw;
+    height: 150px;
+    background-color: black;
+    border-bottom: 1px solid white;
+    color: white;
+    display: flex;
+}
