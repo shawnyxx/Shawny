@@ -1,13 +1,3 @@
-let property_types = {};
-
-let properties_finances;
-
-let bought_properties = [];
-
-let total_property_value = 0;
-
-let profit = 0;
-
 
 function doPropertyFinances() {
     properties_finances = {
@@ -59,9 +49,6 @@ function doPropertyTypes() {
     };
 }
 
-doPropertyFinances();
-
-// property_name = property_types.name
 
 function propertiesIncomeExpense() {
     const total_profit = bought_properties.reduce((acc, property) => {
@@ -78,72 +65,43 @@ function propertiesIncomeExpense() {
         shortenMoneyDisplay(profit);
 
         return acc + profit;
-
     }, 0);
 
     if (profit > 0) {
-        addAction(`Incomes from properties: $${shortenMoneyDisplay(total_profit)}`);
+        addAction(`Incomes from properties: ${shortenMoneyDisplay(total_profit)}`);
     }
 }
 
 function doPropertyButton(propertyName) {
     buttonID = propertyName.toLowerCase() + 'Button';
-
-    document.getElementById(buttonID).textContent = `Buy ${property_types[propertyName].name} ($${doMoneyNotation(property_types[propertyName].price)})`;
+    document.getElementById(buttonID).textContent = `Buy ${property_types[propertyName].name} (${doMoneyNotation(property_types[propertyName].price)})`;
 }
 
 
-doPropertyTypes();
-
-doPropertyButton('Apartement');
-doPropertyButton('Condo');
-doPropertyButton('House');
-doPropertyButton('Castle');
-doPropertyButton('Mansion');
-doPropertyButton('Island');
-doPropertyButton('Planet');
 
 
-function openPropertyMenu() {
-    document.getElementById('property-menu').style.display = 'block';
-    document.getElementById('property-bttn').disabled = true;
-    closeUpgradeMenu();
-    closeCryptoGains();
-    closeStats();
-}
-
-
-function closePropertyMenu() {
-    document.getElementById('property-menu').style.display = 'none';
-    document.getElementById('property-bttn').disabled = false;
-}
 
 
 function buyProperty(property_name) {
-    const property_type = property_types[property_name];
-    const property_price = property_type.price;
+    var property_type = property_types[property_name];
+    var property_price = property_type.price;
 
-    if (money >= property_price) {
+    if (money >= parseInt(property_price)) {
         monthly_profit -= property_price;
         money -= property_price;
 
         total_property_value += property_price;
 
-        doNotification(`You just bought a ${property_type.name} for $${doMoneyNotation(property_price)}`);
-        bought_properties.push({ name: property_type.name, price: property_price });
+        doNotification(`You just bought a ${property_type.name} for ${doMoneyNotation(property_price)}`);
 
+        bought_properties.push({ name: property_type.name, price: property_price });
 
         updateManagePropertyWindow(property_type.name, property_price);
         updateProfile();
         doPropertyTypes();
         doPropertyButton(property_name);
-    } else {
-        alert("You don't have enough money to buy this property")
-    }
-}
 
-function sellProperty(propertyName) {
-    isDragging = false;
-    propertyName = bought_properties.name;
-    console.log(bought_properties);
+    } else {
+        createPopupWindow("Alert", "You don't have enough money to buy this property", "Ok");
+    }
 }

@@ -1,7 +1,6 @@
-// ^ Audio Libraries
 
-// create audio elements with
-function audio_IMPORT(musicID, id, isLOOPED, isMUTED, canAUTOPLAY) {
+// create audio elements
+function audioImport(musicID, id, isLOOPED, isMUTED, canAUTOPLAY) {
     let audio = document.createElement('audio');
     audio.src = musicID;
     audio.id = id;
@@ -11,8 +10,8 @@ function audio_IMPORT(musicID, id, isLOOPED, isMUTED, canAUTOPLAY) {
     audio.autoplay = canAUTOPLAY;
 }
 
-// use this function to play an audio once
-function audio_PLAY(audioSOURCE) {
+// creates and then play an audio once
+function audioPlay(audioSOURCE) {
     let audio = document.createElement('audio');
     audio.src = audioSOURCE;
     audio.play();
@@ -21,11 +20,18 @@ function audio_PLAY(audioSOURCE) {
     })
 }
 
-// open and close menu
-function menu_OPEN_CLOSE(menuID, openCLOSE) {
-    if (openCLOSE === 'open') {
-        document.getElementById(menuID).style.display = 'block';
-    } else if (openCLOSE === 'close') {
-        document.getElementById(menuID).style.display = 'none';
+// show/hide html element(s)
+function showhideTag(tagName, displayStyle = 'block') {
+    var elements = document.getElementsByTagName(tagName);
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = displayStyle;
     }
+}
+
+function reload() {
+    location.reload();
+}
+
+function consoleLog(mess) {
+    console.log(mess);
 }

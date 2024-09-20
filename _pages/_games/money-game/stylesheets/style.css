@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+
+.inline-block {
+    display: inline-block;
+}
+
 #counter {
     font-size: 24px;
     margin-top: 20px;
@@ -32,28 +37,6 @@
     margin-bottom: 5px;
 }
 
-button {
-    margin: 0;
-    margin-top: 10px;
-    padding: 5px;
-    cursor: pointer;
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
-    border-radius: 4px;
-}
-
-button:disabled {
-    margin: 0;
-    margin-top: 10px;
-    padding: 5px;
-    cursor: not-allowed;
-    background-color: transparent;
-    color: rgb(75, 75, 75);
-    border: 2px solid rgb(75, 75, 75);
-    border-radius: 4px;
-}
-
 .text-button {
     background-color: transparent;
     border: none;
@@ -62,12 +45,8 @@ button:disabled {
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
     button {
         font-size: 7px;
-    }
-
-    p {
-        font-size: 13px;
     }
 }

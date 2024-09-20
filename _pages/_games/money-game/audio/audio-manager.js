@@ -17,6 +17,18 @@ const game_soundtrack = [
     {
         name: 'soundtrack_3',
         link: '/_pages/_games/money-game/audio/audio-files/Indian Cinemascope - Hanu Dixit.mp3'
+    },
+    {
+        name: 'soundtrack_4',
+        link: '/_pages/_games/money-game/audio/audio-files/Burlesque - National Sweetheart.mp3'
+    },
+    {
+        name: 'soundtrack_5',
+        link: '/_pages/_games/money-game/audio/audio-files/Highway Nocturne - National Sweetheart.mp3'
+    },
+    {
+        name: 'soundtrack_6',
+        link: '/_pages/_games/money-game/audio/audio-files/Mirage melody - Patrick Patrikios.mp3'
     }
 ];
 
@@ -62,7 +74,7 @@ function soundtrackShuffling() {
     });
 
     song_playing.play();
-    
+
 }
 
 

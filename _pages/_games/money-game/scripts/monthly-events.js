@@ -13,57 +13,50 @@ const month = {
     12: "December",
 };
 
-let monthLength = 30000;
-
-let year = 0;
-let monthIndex = 1;
-
 function yearManager() {
-    if (monthIndex < 12) {
-        monthIndex++;
+    if (month_index < 12) {
+        month_index++;
     } else {
-        monthIndex = 1;
+        month_index = 1;
         year++;
+        addAction('A new year has just started.', 'orange');
+        doNotification('A new year has started', 'white', 'orange');
+        doInterest();
+        doTaxes();
     }
 }
 
 
 setInterval(() => {
+    if (game_started) {
 
-    doNotification('A new month has just started, you can see you latest financial report in your stats dashboard.', 'orange', 'orange');
+        yearManager();
+        doNotification('A new month has just started, you can see you latest financial report in your stats dashboard.', 'orange', 'orange');
 
-    let interestRate = Math.random() * (1.3 - 0.003) + 0.003;
-    let interest = interestRate / 100;
 
-    monthly_profit += interest;
-    addAction(`Interest Rate: $${shortenMoneyDisplay(interest)} (${interestRate.toFixed(0)}%)`);
+        if (spammUpgrade) {
+            addAction('Your spamm technique stopped working, the very smart tech people patched it.');
+            document.getElementById('spammUpgradeButton').disabled = false;
+            spammUpgrade = false;
+        }
 
-    if (spammUpgrade) {
-        addAction('Your spamm technique stopped working, the very smart tech people patched it.');
-        document.getElementById('spammUpgradeButton').disabled = false;
-        spammUpgrade = false;
+        getPaycheck();
+        propertiesIncomeExpense();
+        doPropertyFinances();
+        updateCrypto();
+        updateCounter();
+        updateStats();
+        updateFinancialReport();
+
+        if (monthly_profit > 0) {
+            doNotification(`Last month profit: ${shortenMoneyDisplay(monthly_profit)}`, 'green', 'green');
+        } else if (monthly_profit < 0) {
+            doNotification(`Last month profit: ${shortenMoneyDisplay(monthly_profit)}`, 'red', 'green');
+        }
+
+        monthly_profit = 0;
+
+        setStoredData();
     }
 
-
-    doTaxes();
-    getPaycheck();
-    updateCrypto();
-    propertiesIncomeExpense();
-    doPropertyFinances();
-    yearManager();
-    updateCounter();
-    updateStats();
-    updateFinancialReport();
-
-    if (monthly_profit > 0) {
-        addAction(`Last month's profit: $${shortenMoneyDisplay(monthly_profit)}`, 'Green');
-    } else if (monthly_profit < 0) {
-        addAction(`Last month's profit: $${shortenMoneyDisplay(monthly_profit)}`, 'Red');
-    }
-
-    monthly_profit = 0;
-
-}, monthLength);
-
-
-updateStats();
+}, month_length);

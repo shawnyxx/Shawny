@@ -1,8 +1,8 @@
 
 function openAboutUsMenu() {
-    document.getElementById('about-us-window').style.display = 'block';
+    document.getElementById('about-us').style.display = 'block';
 }
 
 function closeAboutUsMenu() {
-    document.getElementById('about-us-window').style.display = 'none';
+    document.getElementById('about-us').style.display = 'none';
 }
