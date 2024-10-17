@@ -40,6 +40,7 @@ setInterval(() => {
         if (job) {
             audioPlay('./audio/audio-files/money-sound.mp3');
         }
+        doDegree();
         getPaycheck();
         propertiesIncomeExpense();
         doPropertyFinances();
