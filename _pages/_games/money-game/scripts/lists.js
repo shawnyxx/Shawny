@@ -180,6 +180,7 @@ const planet_locations = [
 const education_levels = [
     {
         "name": "High School",
+        "obtained": false,
         "length": 4,
         "salary": 35000,
         "areas_of_study": [
@@ -191,6 +192,7 @@ const education_levels = [
     },
     {
         "name": "Community College",
+        "obtained": false,
         "length": 2,
         "salary": 40000,
         "areas_of_study": [
@@ -214,6 +216,7 @@ const education_levels = [
     },
     {
         "name": "Associate's Degree",
+        "obtained": false,
         "length": 2,
         "salary": 50000,
         "areas_of_study": [
@@ -237,6 +240,7 @@ const education_levels = [
     },
     {
         "name": "Bachelor's Degree",
+        "obtained": false,
         "length": 4,
         "salary": 60000,
         "areas_of_study": [
@@ -264,6 +268,7 @@ const education_levels = [
     },
     {
         "name": "Master's Degree",
+        "obtained": false,
         "length": 2,
         "salary": 70000,
         "areas_of_study": [
@@ -291,6 +296,7 @@ const education_levels = [
     },
     {
         "name": "Doctoral Degree",
+        "obtained": false,
         "length": 4,
         "salary": 90000,
         "areas_of_study": [
@@ -318,6 +324,7 @@ const education_levels = [
     },
     {
         "name": "Postdoctoral",
+        "obtained": false,
         "length": 3,
         "salary": 80000,
         "areas_of_study": [
@@ -351,3 +358,10 @@ const numof_island_locations = island_locations.length;
 const numof_planet_locations = planet_locations.length;
 const numof_education_levels = education_levels.length;
 
+// Education levels shortcuts
+const high_school = education_levels[0];
+const community_college = education_levels[1];
+const bachelor = education_levels[2];
+const master = education_levels[3];
+const doctorate = education_levels[4];
+const postdoctoral = education_levels[5];

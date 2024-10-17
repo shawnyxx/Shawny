@@ -78,6 +78,21 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+let spacePressed = false;
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === ' ' && !spacePressed) {
+        spacePressed = true;
+        tapScreen();
+    }
+});
+
+document.addEventListener('keyup', function(event) {
+    if (event.key === ' ') {
+        spacePressed = false;
+    }
+});
+
 setInterval(function () {
     const eventChance = Math.floor(Math.random() * (100 - 0) + 0);
     if (eventChance === 0.001) {

@@ -9,7 +9,7 @@ function getPaycheck() {
 
         if (paycheck !== 0) {
             addAction(`You just received a paycheck of: ${shortenMoneyDisplay(paycheck)}`, 'green');
-            updateNetWorth();
+            updateStatsMenu();
         }
         
         paycheck = 0;

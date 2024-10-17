@@ -25,6 +25,12 @@ function viewStats() {
     closeHousingMarket();
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Tab') {
+        openBrowser();
+    }
+})
+
 function closeStats() {
     showhideTag('stats', 'none');
     document.getElementById('stats-bttn').disabled = false;
