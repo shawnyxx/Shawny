@@ -15,7 +15,9 @@ let data = [
             stored_monthIndex: null,
             stored_cryptoAccount: null,
             stored_interest: null,
-            stored_interest_rate: null
+            stored_interest_rate: null,
+            stored_crypto_graph_data: null,
+            stored_crypto_graph_labels: null
         }
     }
 ];
@@ -37,7 +39,9 @@ function setStoredData(database) {
                 stored_monthIndex: month_index,
                 stored_cryptoAccount: cryptoAccountOpened,
                 stored_interest: interest,
-                stored_interest_rate: interest_rate
+                stored_interest_rate: interest_rate,
+                stored_crypto_graph_data: crypto_graph_data,
+                stored_crypto_graph_labels: crypto_graph_labels
             };
             localStorage.setItem('storedData', JSON.stringify(data[1].money_game));
         }
@@ -54,27 +58,49 @@ function getStoredData(database) {
     if (database === "money game") {
         if (storedData) {
             const parsedData = JSON.parse(storedData);
+
+            // Load the money
             money = parsedData.stored_money;
+
+            // Load the property
             total_property_value = parsedData.stored_totalPropertiesValue;
             bought_properties = parsedData.stored_boughtProperties;
+
+            // Load the money per taps
             money_per_tap = parsedData.stored_moneyPerTap;
             money_machine_price = parsedData.stored_moneyMachinePrice;
+
+            // Load the time
             year = parsedData.stored_year;
             month_index = parsedData.stored_monthIndex;
+
+            // Load the crypto account
             cryptoAccountOpened = parsedData.stored_cryptoAccount;
+            crypto_graph_data = [...parsedData.stored_crypto_graph_data];
+            crypto_graph_labels = [...parsedData.stored_crypto_graph_labels];
+            cryptoChart.data.labels = crypto_graph_labels;
+            cryptoChart.data.datasets[0].data = crypto_graph_data;
+            cryptoChart.update();
+
+            // Load the interest text element
             interest = parsedData.stored_interest;
             interest_rate = parsedData.stored_interest_rate;
+            
+            // Give visual to the user
             updateLoadedData("money game");
             doNotification('Welcome back', undefined, undefined);
             addAction(`Loaded progress from last save: ${shortenMoneyDisplay(parsedData.stored_money)}, ${parsedData.stored_boughtProperties.length} properties and a salary of ${shortenMoneyDisplay(parsedData.stored_moneyPerTap)} per tap.`, 'orange');
         } else {
-            console.log("No stored data");
+            // Print no stored data in the console when no data is found
+            console.log("No stored data for money game");
         }
     } else if (database === "settings") {
         if (storedSettings) {
             const parsedSettings = JSON.parse(storedSettings);
             buttonEnabled = parsedSettings.buttons;
             console.log(parsedSettings)
+        } else {
+            console.log("No stored settings");
         }
     }
 }

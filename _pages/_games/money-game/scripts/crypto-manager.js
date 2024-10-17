@@ -113,14 +113,18 @@ function updateCrypto() {
     }
 }
 
-
-
 function addData(chart, data) {
     const nextLabel = `Label ${chart.data.labels.length + 1}`;
     chart.data.labels.push(nextLabel); // Add a new label for the new data point
     chart.data.datasets[0].data.push(data); // Add the new data
+    crypto_graph_data = cryptoChart.data.datasets[0].data;
+    crypto_graph_labels = cryptoChart.data.labels;
     chart.update();
+    
+    // Save updated chart data to local storage
+    setStoredData("money game");
 }
+
 
 const ctx = document.getElementById('cryptoChart').getContext('2d');
 const cryptoChart = new Chart(ctx, {

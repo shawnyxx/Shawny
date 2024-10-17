@@ -11,6 +11,7 @@ let job = false;
 let paycheck = 0;
 let timeMult = Math.floor(Math.random() * (100 - 30) + 30);
 let salary = 0;
+let working_hours = 40;
 
 // Time related variables
 let year = 0;
@@ -45,6 +46,8 @@ let cryptoGains = [];
 let gain = "";
 let crypto_percentage = 0;
 let crypto_going_up_or_down;
+let crypto_graph_labels = [];
+let crypto_graph_data = [];
 
 // Spamm upgrade related variables
 let spammUpgradePrice = 1000;
@@ -53,3 +56,10 @@ let spammUpgradePrice = 1000;
 let housing_market_message_has_played = false;
 let maximum_generated_properties = 500;
 let currently_generated_properties = 0;
+
+
+// Education
+let studying = false;
+let current_degree = null;
+let degree_years = 0;
+let obtained_degrees = [];
