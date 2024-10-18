@@ -18,7 +18,7 @@ function getDegree(degreeindex, studyindex) {
             if (studyindex < education_levels[i].areas_of_study.length) {
                 degree_type = education_levels[degreeindex].areas_of_study[studyindex].name;
             } else {
-                console.log("Requested degree is not listed.")
+                console.log("Requested degree is not listed.");
             }
             education_levels[degreeindex].obtained = true;
 
@@ -27,18 +27,18 @@ function getDegree(degreeindex, studyindex) {
 
             studying = true;
             doNotification(`You just started your first year of ${degree_length} years in ${degree_name}`);
-
         }
     }
 }
 
 function doDegree() {
     if (studying) {
-        const degree_index = current_degree[3]
+        const degree_index = current_degree[3];
         const area_of_study_index = current_degree[4];
-        if (current_degree[1] >= degree_years) {
-            degree_years += 1;
-            doNotification(`You have completed one year of your ${current_degree[2]} degree. You have ${current_degree[1] - degree_years} year left`, "pink", "pink");
+        const degree_length = current_degree[1];
+        if (degree_length > degree_years) {
+            degree_years++;
+            doNotification(`You have completed one year of your ${current_degree[2]} degree. You have ${(current_degree[1] - 1) - degree_years} year left`, "pink", "pink");
         } else if (current_degree[1] === degree_years) {
             doNotification(`You have completed your ${current_degree[2]} degree`, "pink", "pink");
             obtained_degrees.push[current_degree[0], current_degree[2]];
@@ -46,11 +46,22 @@ function doDegree() {
             console.log(current_degree);
             current_degree = null;
             studying = false;
+            return;
         }
-
     } else {
         console.log("You are not studying");
     }
+}
+
+function seeObtainedDegrees() {
+    let degrees = null;
+    if (obtained_degrees.length > 0) {
+        degrees = obtained_degrees;
+    } else {
+        degrees = "You have no degrees"
+    }
+
+    createPopupWindow('Your obtained degrees', degrees, 'no');
 }
 
 doDegree();

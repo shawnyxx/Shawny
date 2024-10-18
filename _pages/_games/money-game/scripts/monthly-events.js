@@ -22,11 +22,11 @@ function yearManager() {
         addAction('A new year has just started.', 'orange');
         doNotification('A new year has started', 'white', 'orange');
         doInterest();
+        doDegree();
         doTaxes();
         updateStatsMenu();
     }
 }
-
 
 setInterval(() => {
     if (game_started) {
@@ -40,7 +40,6 @@ setInterval(() => {
         if (job) {
             audioPlay('./audio/audio-files/money-sound.mp3');
         }
-        doDegree();
         getPaycheck();
         propertiesIncomeExpense();
         doPropertyFinances();
@@ -58,5 +57,5 @@ setInterval(() => {
 
         setStoredData();
     }
-
+    
 }, month_length);
