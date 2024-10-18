@@ -128,7 +128,7 @@
                                     <div id="choose-degree" class="degree-menu-element">
 
                                         <!-- High school card -->
-                                        <button id="highschool-card" class="degreecard" onclick="getDegree(0, 0)">
+                                        <button id="highschool-card" class="degreecard" onclick="getDegree(0, 0)" disabled>
                                             <emoji>
                                                 🏫
                                             </emoji>
@@ -249,6 +249,12 @@
 
                                         <p class="inline-block">📅 Last taxes</p>
                                         <p id="last-taxes" class="inline-block" style="color: red;"></p>
+                                    </statscontent>
+                                    
+                                    <statscontent>
+                                        <p class="inline-block">🎓 Studies</p>
+                                        <p id="studies" class="inline-block">No enrolled</p>
+                                        <button class="inline-block text-button" onclick="seeObtainedDegrees()">See obtained degrees</button>
                                     </statscontent>
                                 </stats>
 

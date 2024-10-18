@@ -16,7 +16,7 @@ let working_hours = 40;
 // Time related variables
 let year = 0;
 let month_index = 1;
-let month_length = 30000;
+let month_length = 1000;
 
 // Money infos
 let total_net_worth = 0;
@@ -56,7 +56,6 @@ let spammUpgradePrice = 1000;
 let housing_market_message_has_played = false;
 let maximum_generated_properties = 500;
 let currently_generated_properties = 0;
-
 
 // Education
 let studying = false;

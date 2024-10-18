@@ -352,6 +352,7 @@ const education_levels = [
     }
 ];
 
+
 // list.lenght variables
 const numof_street_names = street_names.length;
 const numof_island_locations = island_locations.length;
