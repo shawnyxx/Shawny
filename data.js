@@ -19,7 +19,13 @@ let data = [
             stored_interest_rate: null,
             stored_crypto_graph_data: null,
             stored_crypto_graph_labels: null,
-            stored_hasjob: null
+            stored_hasjob: null,
+            stored_listedDegrees: null,
+            stored_degreeData: null,
+            stored_degreeButtons: null,
+            stored_BankAccountData: null,
+            stored_notes: null,
+            stored_salary: null,
         }
     }
 ];
@@ -59,7 +65,24 @@ function setStoredData(database) {
                 stored_crypto_graph_labels: crypto_graph_labels,
 
                 // Stores the boolean job weither the player has a job or not
-                stored_hasjob: job
+                stored_hasjob: job,
+
+                // Stores education related data
+                stored_listedDegrees: obtained_degrees,
+                stored_degreeData: {progress: degree_years, studying: studying},
+                stored_currentDegree: current_degree,
+
+                // Stores the degree buttons
+                stored_degreeButtons: disabled_degree_buttons_id,
+
+                // Stores the bank account data
+                stored_BankAccountData: bank_account_data,
+
+                // Stores the notes
+                stored_notes: notes,
+
+                // Stores the salary
+                stored_salary: salary,
             };
             localStorage.setItem('storedData', JSON.stringify(data[1].money_game));
         }
@@ -108,6 +131,25 @@ function getStoredData(database) {
             // Load the job
             job = parsedData.stored_hasjob;
             
+            // Load the education
+            obtained_degrees = parsedData.stored_listedDegrees,
+            degree_years = parsedData.stored_degreeData.progress,
+            studying = parsedData.stored_degreeData.studying;
+            current_degree = parsedData.stored_currentDegree;
+
+            // Load the degree buttons
+            disabled_degree_buttons_id = parsedData.stored_degreeButtons;
+
+            // Load the bank account data
+            bank_account_data = parsedData.stored_BankAccountData;
+            bank_account_holdings = parsedData.stored_BankAccountData[1];
+
+            // Load the notes
+            notes = parsedData.stored_notes;
+
+            // Load the salary
+            salary = parsedData.stored_salary;
+            
             // Give visual to the user
             updateLoadedData("money game");
             doNotification('Welcome back', undefined, undefined);
@@ -139,11 +181,19 @@ function updateLoadedData(database) {
         // Updates the money-machine button
         doMoneyMachineButton();
 
+        // Updates the bank account menu
+        updateBankAccountElements();
+        updateBankHoldings();
+
         // Updates the stats menu
         updateStatsMenu();
 
         // Updates the crypto related elements
         updateCrypto();
+
+        // Update the notebook
+        updateNotes();
+        
     } else if (database === "settings") {
         updateSettings();
     }
@@ -151,32 +201,8 @@ function updateLoadedData(database) {
 
 function clearStoredData(database) {
     if (database === "money game") {
-        // Clears the money
-        money = 0;
-
-        // Clears the properties related variables
-        total_property_value = 0;
-        bought_properties = [];
-
-        // Clears the money-machine/money-per-tap values
-        money_per_tap = 0;
-        money_machine_price = 0;
-
-        // Clears the time related values
-        year = 0;
-        month_index = 0;
-
-        // Clears the crypto account data
-        cryptoAccountOpened = false;
-        crypto_graph_data = [];
-        crypto_graph_label = [];
-
-        // Clears the job bool
-        job = false;
-
-        // Clears the interest data
-        interest = 0.02;
-        interest_rate = 1.9;
+        // Resets the variables
+        resetVariables();
         
         localStorage.removeItem('storedData');
 

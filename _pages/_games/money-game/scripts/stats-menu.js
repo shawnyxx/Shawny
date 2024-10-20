@@ -19,7 +19,7 @@ function updateTimeElement() {
 
 // Update the net worth element
 function updateNetWorthElement() {
-  total_net_worth = money + total_property_value;
+  total_net_worth = money + total_property_value + bank_account_holdings;
   net_worth_element.style.color = "Green";
   net_worth_element.textContent = `${doMoneyNotation(total_net_worth)}`;
 }
@@ -36,8 +36,13 @@ function updateMonthlyProfitElement() {
 
 // Update the the salary element
 function updateSalaryElement() {
-  salary_element.style.color = "green";
-  salary_element.textContent = `${shortenMoneyDisplay(money_per_tap)} per tap`;
+  if (money_per_tap > 0) {
+    salary_element.style.color = "red";
+    salary_element.textContent = `🏴‍☠️ ${shortenMoneyDisplay(money_per_tap + salary)} 🏴‍☠️`;
+  } else {
+    salary_element.style.color = "green";
+    salary_element.textContent = `${doMoneyNotation(salary)}`;
+  }
 }
 
 // Update the bought properties element
@@ -53,6 +58,20 @@ function updateTaxElement() {
 // Update the interest element
 function updateInterestElement() {
   interest_text.innerText = `${doMoneyNotation(interest)}`;
+}
+
+function updateStudiesElement() {
+  // Update the degree status
+  if (studying) {
+    if (degree_years < current_degree[1]) {
+      isEnrolledElement.textContent = `You are currently studying in ${current_degree[0]} in ${current_degree[2]}, you have ${current_degree[1] - degree_years} years left.`;
+    } else if (degree_years === current_degree[1]) {
+      isEnrolledElement.textContent = `You are currently studying in ${current_degree[0]} in ${current_degree[2]}, you have 12 months left.`;
+    }
+  } else {
+    // Update the degree status
+    isEnrolledElement.textContent = `Not Enrolled`;
+  }
 }
 
 // Update the stats menu with updated information

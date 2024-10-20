@@ -7,19 +7,16 @@
         content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Money Game</title>
 
-    <link rel="stylesheet" href="./stylesheets/stats-menu.css">
     <link rel="stylesheet" href="./stylesheets/style.css">
     <link rel="stylesheet" href="./stylesheets/browser-style.css">
     <link rel="stylesheet" href="./stylesheets/page-style.css">
     <link rel="stylesheet" href="./stylesheets/dashboard.css">
     <link rel="stylesheet" href="./stylesheets/main-menu.css">
-    <link rel="stylesheet" href="./stylesheets/manage-properties-window.css">
     <link rel="stylesheet" href="./stylesheets/loader.css">
     <link rel="stylesheet" href="./stylesheets/animations.css">
     <link rel="stylesheet" href="./stylesheets/housing-market-style.css">
-    <link rel="stylesheet" href="./stylesheets/crypto-gains-window.css">
     <link rel="stylesheet" href="./stylesheets/housingmarket.css">
-    <link rel="stylesheet" href="./stylesheets/school-degree.css">
+    <link rel="stylesheet" href="./stylesheets/window.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -47,19 +44,70 @@
 
                     <p>Click play to start</p>
 
-                    <br><br><br><br><br>
+                    <br><br>
 
                     <p>The development of this game is managed by: S. Xavier Charland L.</p>
-                </div>
 
-                <div id="main-menu-start-bttn-container" class="main-menu-content">
+                    <br>
+
+                    <h2>What's new?</h2>
+
+                    <p>Version V.0.0.1.2 [Beta]</p>
+
+                    <br>
+
+                    <container id="whats-new">
+
+                        <h4>UI & Features</h4>
+                        <p>Added motion to some menu interactions</p>
+                        <p>Added a new education system</p>
+                        <p>Improved crypto management</p>
+                        <p>Improved the housing market system</p>
+                        <p>Minor UI improvement on low end devices</p>
+                        <p>Added a bank system</p>
+                        <p>Added a notebook (Highly requested)</p>
+                        <p>Added a way to see the month's progress</p>
+                        <p>Money machine is now illegal 🏴‍☠️</p>
+                        
+                        <br>
+                        
+                        <p>Rebalanced the whole way of making money</p>
+                        <p>New Windows 10/11 desktop application</p>
+                        <p>New keyboard navigation support</p>
+                        <p>Improved performance and stability</p>
+                        <p>Improved the data managment</p>
+                        <p>Support for different devices</p>
+                        <h4>Bug fixes & Optimization</h4>
+                        
+                        <br>
+                        
+                        <h4>Upcoming/In progress</h4>
+                        <p>Offline mode for mobile devices</p>
+                        <p>Working on a new business system</p>
+                        <p>Working on some new UI elements</p>
+
+                        <br>
+
+                        <p style="font-weight: bold;">This project is made with 💪 and 💖</p>
+                        <p>By Shawnyxx and Ecxo Games Studio</p>
+                    </container>
+
+                    <p style="font-size: small; text-decoration: underline;">* Scroll down for more...</p>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
                     <button onclick="startGame()">Play</button>
+
                 </div>
             </div>
         </div>
         <div class="content">
             <div class="title-bar">
                 <button id="suicide-button" onclick="suicide()"></button>
+                <button class="text-button" onclick="support()">Contact Support</button>
                 <h1>Money Game</h1>
                 <p>Tap the screen to start making money</p>
             </div>
@@ -70,8 +118,160 @@
 
             <button onclick="openBrowser()">Browse Internet</button>
 
+            <div id="month-indicator"></div>
+
             <browser id="browser">
                 <browsercontent>
+                <!-- ^ Popup windows -->
+                <popupcontainer>
+                    <div id="manage-property-window" class="window">
+                        <p>Manage Your Properties</p>
+
+                        <button id="close-manage-property-window-button"
+                            onclick="closeManagePropertyWindow()"></button>
+
+                        <br>
+
+                        <div id="property-window-content"></div>
+                    </div>
+
+                    <div id="crypto-gains-window" class="window">
+                        <container>
+                            <h3>Crypto Gains:</h3>
+                        </container>
+
+                        <container>
+                            <div id="crypto-window-dragg" style="width: 100%;">
+                                <p>View your crypto gains</p>
+                            </div>
+                            <button id="close-manage-property-window-button" onclick="closeCryptoGains()"></button>
+
+                            <div id="cryptoChart-container">
+                                <canvas id="cryptoChart"></canvas>
+                            </div>
+
+                            <div id="crypto-gains-menu-list"></div>
+
+                        </container>
+                    </div>
+
+                    <div id="business-window" class="window">
+                        <container>
+                            <h3>Business</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeBusinessWindow()"></button>
+
+                            <p>This feature are currently in development...</p>
+
+                        </container>
+                    </div>
+
+                    <div id="degree-window" class="window">
+                        <container>
+                            <h3>Chose an area of study</h3>
+                            <button id="close-manage-property-window-button" onclick="closeDegreeWindow()"></button>
+
+                            <div id="choose-degree" class="degree-menu-element">
+
+                                <!-- High school card -->
+                                <button id="highschool-card" class="degreecard" onclick="getDegree(0, 0)">
+                                    <emoji>
+                                        🏫
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="high-school-level">High School</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p style="color: green;">Free</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p>5 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <!-- Community college card -->
+                                <button id="community-college-card" class="degreecard" onclick="showDegreeList('College')">
+                                    <emoji>
+                                        📖
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="community-college-level">Community College</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p style="color: green;">Free</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p id="community-college-length">2-3 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <!-- University card -->
+                                <button id="university-card" class="degreecard" onclick="showDegreeList('University')">
+                                    <emoji>
+                                        🎓
+                                    </emoji>
+
+                                    <degreelevel id="degree-title">
+                                        <p id="high-school-level">University</p>
+                                    </degreelevel>
+
+                                    <degreeprice id="degree-price">
+                                        <p id="university-price" style="color: green;">$20k (min)</p>
+                                    </degreeprice>
+
+                                    <degreelength id="degree-length">
+                                        <p id="university-length">2-6 years</p>
+                                    </degreelength>
+                                </button>
+
+                                <p style="width: 100%;">These features are currently in development...</p>
+                            </div>
+                            
+                            <div id="degree-menu-list" class="degree-menu-element">
+                                <button class="text-button" onclick="closeDegreeList()">Back</button>
+                                <h4>Degree menu list</h4>
+                                <div id="degree-list"></div> <!-- Degree Menu List -->
+                            </div>
+                        </container>
+                    </div>
+
+                    <div id="notebook-window" class="window">
+                        <container>
+                            <h3>Notebook</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeNotebook()"></button>
+
+                            <textarea id="notebook" placeholder="Start being creative"></textarea>
+                        </container>
+                    </div>
+
+                    <div id="bank-account-window" class="window">
+                        <container>
+                            <h3>Bank of New York</h3>
+                        </container>
+
+                        <container>
+                            <button id="close-manage-property-window-button" onclick="closeBankAccountWindow()"></button>
+
+                            <h4>Holdings</h4>
+                            <h1 style="color: green" id="holdings">No current holdings</h1 style="color: green">
+                                
+                            <button id="deposit-money" class="default-button" onclick="depositMoney()">➕ Deposit</button>
+                            <button id="withdraw-money" class="default-button" onclick="withdrawMoney()">➖ Withdraw</button>
+                                
+                        </container>
+                    </div>
+                </popupcontainer>
                     <browserblur>
                         <browsertopbar>
                             <button onclick="closeBrowser()"
@@ -88,110 +288,7 @@
                         </browsertopbar>
 
                         <browsercontainer>
-                            <!-- ^ Popup windows -->
-                            <div id="manage-property-window" class="window draggable">
-                                <p>Manage Your Properties</p>
 
-                                <button id="close-manage-property-window-button"
-                                    onclick="closeManagePropertyWindow()"></button>
-
-                                <br>
-
-                                <div id="property-window-content"></div>
-                            </div>
-
-                            <div id="crypto-gains-window" class="window draggable">
-                                <container>
-                                    <h3>Crypto Gains:</h3>
-                                </container>
-
-                                <container>
-                                    <div id="crypto-window-dragg" style="width: 100%;">
-                                        <p>View your crypto gains</p>
-                                    </div>
-                                    <button id="close-manage-property-window-button" onclick="closeCryptoGains()"></button>
-    
-                                    <div id="cryptoChart-container">
-                                        <canvas id="cryptoChart"></canvas>
-                                    </div>
-
-                                    <div id="crypto-gains-menu-list"></div>
-
-                                </container>
-                            </div>
-
-                            <div id="degree-window" class="window draggable">
-                                <container>
-                                    <h3>Chose an area of study</h3>
-                                    <button id="close-manage-property-window-button" onclick="closeDegreeWindow()"></button>
-
-                                    <div id="choose-degree" class="degree-menu-element">
-
-                                        <!-- High school card -->
-                                        <button id="highschool-card" class="degreecard" onclick="getDegree(0, 0)" disabled>
-                                            <emoji>
-                                                🏫
-                                            </emoji>
-
-                                            <degreelevel id="degree-title">
-                                                <p id="high-school-level">High School</p>
-                                            </degreelevel>
-
-                                            <degreeprice id="degree-price">
-                                                <p style="color: green;">Free</p>
-                                            </degreeprice>
-
-                                            <degreelength id="degree-length">
-                                                <p>5 years</p>
-                                            </degreelength>
-                                        </button>
-
-                                        <!-- Community college card -->
-                                        <button id="community-college-card" class="degreecard" onclick="startSchool()" disabled>
-                                            <emoji>
-                                                📖
-                                            </emoji>
-
-                                            <degreelevel id="degree-title">
-                                                <p id="community-college-level">Community College</p>
-                                            </degreelevel>
-
-                                            <degreeprice id="degree-price">
-                                                <p style="color: green;">Free</p>
-                                            </degreeprice>
-
-                                            <degreelength id="degree-length">
-                                                <p id="community-college-length">2-3 years</p>
-                                            </degreelength>
-                                        </button>
-
-                                        <!-- University card -->
-                                        <button id="university-card" class="degreecard" onclick="startSchool()" disabled>
-                                            <emoji>
-                                                🎓
-                                            </emoji>
-
-                                            <degreelevel id="degree-title">
-                                                <p id="high-school-level">University</p>
-                                            </degreelevel>
-
-                                            <degreeprice id="degree-price">
-                                                <p id="university-price" style="color: green;">$20k (min)</p>
-                                            </degreeprice>
-
-                                            <degreelength id="degree-length">
-                                                <p id="university-length">2-6 years</p>
-                                            </degreelength>
-                                        </button>
-
-                                        <p style="width: 100%;">These features are currently in development...</p>
-                                    </div>
-                                    
-                                    <div id="degree-menu-list" class="degree-menu-element">
-                                        <p>Degree menu list</p>
-                                    </div>
-                                </container>
-                            </div>
 
                             <button onclick="viewStats()" class="tab-bttn" id="stats-bttn" disabled>Your Stats</button>
                             <button onclick="viewServices()" class="tab-bttn" id="services-bttn">Services</button>
@@ -249,12 +346,18 @@
 
                                         <p class="inline-block">📅 Last taxes</p>
                                         <p id="last-taxes" class="inline-block" style="color: red;"></p>
-                                    </statscontent>
-                                    
-                                    <statscontent>
+
+                                        <br>
+                                        
                                         <p class="inline-block">🎓 Studies</p>
+                                        
                                         <p id="studies" class="inline-block">No enrolled</p>
                                         <button class="inline-block text-button" onclick="seeObtainedDegrees()">See obtained degrees</button>
+
+                                        <br>
+                                        
+                                        <p class="inline-block">📝 Notebook</p>
+                                        <button class="inline-block text-button" onclick="viewNotebook()">Open notebook</button>
                                     </statscontent>
                                 </stats>
 
@@ -296,7 +399,7 @@
                                             </cardtextcontainer>
 
                                         </card>
-                                        <card id="business-card" onclick="commingSoon()">
+                                        <card id="business-card" onclick="openBusinessWindow()">
 
                                             <cardtitle>Start a business</cardtitle>
 
@@ -384,6 +487,9 @@
                                                 <span>
                                                     <p>Paychecks depends on your salary</p>
                                                 </span>
+                                                <span>
+                                                    <p id="job-info">You are not currently working</p>
+                                                </span>
                                             </cardtextcontainer>
 
                                         </card>
@@ -439,6 +545,25 @@
                                         <button id="viewCryptoButton" class="default-button" onclick="viewCryptoGains()">View Crypto Gains</button>
                                     </container>
 
+
+                                    <space></space>
+
+                                    <container>
+                                        <h3>Banking</h3>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <p>Bank</p>
+                                    </container>
+
+                                    <container style="margin-left: 15px;">
+                                        <button id="open-bank-account-bttn" class="default-button" onclick="openBankAccount()">Open bank account</button>
+                                    </container>
+                                    
+                                    <conatiner style="margin-left: 15px;">
+                                        <button id="view-bank-account-window-bttn" class="default-button" onclick="viewBankAccountWindow()" disabled>View bank account</button>
+                                    </conatiner>
+
                                 </crypto>
 
                                 <!-- ^ Properties menu -->
@@ -456,7 +581,7 @@
                                         
                                     </propertylist>
 
-                                    <p style="    text-align: center; width: 100%;">You reached the end of the page... New properties gets listed here each month.</p>
+                                    <p style="text-align: center; width: 100%;">You reached the end of the page... New properties gets listed here each month.</p>
 
 
 
@@ -474,6 +599,8 @@
 
 		<script src="/_public/libraries/controls.js"></script>
 
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
         <!-- ^ Libraries -->
         <script src="/_public/libraries/public-library.js" type="text/javascript"></script>
 
@@ -487,6 +614,10 @@
 
         <script src="/_public/libraries/notification.js" type="text/javascript"></script>
 
+        <script src="/_public/libraries/support.js"></script>
+
+
+        
         <!-- ^ Scripts -->
         <script src="/data.js" type="text/javascript"></script>
 
@@ -514,11 +645,13 @@
 
         <script src="./scripts/manage-properties-window.js" type="text/javascript"></script>
 
-        <script src="./scripts/crypto-gains-window.js" type="text/javascript"></script>
-
-        <script src="./scripts/housing-market.js"></script>
-
         <script src="./scripts/education.js"></script>
+
+        <script src="./scripts/business.js"></script>
+
+        <script src="./scripts/bank-account-window.js"></script>
+
+        <script src="./scripts/notebook.js"></script>
 
 </body>
 </html>

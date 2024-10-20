@@ -1,16 +1,19 @@
 const money_counter = document.getElementsByClassName('counter');
 
-
+// Start the game
 function startGame() {
     game_started = true;
     start_menu_music.pause();
     soundtrackShuffling();
     getStoredData("money game");
     doCryptoButton();
-    doPropertyFinances();
     doPropertyTypes();
     doMoneyMachineButton();
     generateProperties();
+    updateJobButton();
+    updateEducationMenu();
+    startMonth();
+    updateStudiesElement();
     document.getElementById('menu').remove();
 }
 
@@ -25,8 +28,8 @@ document.querySelectorAll('button').forEach(button => {
 
 function tapScreen() {
     if (game_started && can_click) {
-        money += money_per_tap;
-        monthly_profit += money_per_tap;
+        money += salary + money_per_tap;
+        monthly_profit += salary + money_per_tap;
         taps_per_seconds += 1;
         updateCounter();
         setStoredData("money game");

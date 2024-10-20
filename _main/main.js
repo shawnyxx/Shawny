@@ -86,3 +86,7 @@ function openCloseSettings() {
     }
 }
 
+function resetData() {
+    localStorage.clear();
+    createPopupWindow("Alert", "The data was cleared successfuly", "Close");
+}

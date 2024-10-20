@@ -1,9 +1,9 @@
-#refreshButton, #backButton {
+.draggable-button {
     position: fixed;
     background-size: cover;
     width: fit-content;
     height: fit-content;
     z-index: 999999999;
     transition: transform 0.1s ease-out;
-  }
-  
+}
+

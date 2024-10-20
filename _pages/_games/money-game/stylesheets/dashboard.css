@@ -26,3 +26,14 @@
 #suicide-button:hover {
     top: -15px;
 }
+
+#month-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 0;
+    max-width: 150px;
+    height: 5px;
+    border-radius: 5px;
+    background: gainsboro;
+}

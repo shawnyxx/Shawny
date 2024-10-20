@@ -1,9 +1,19 @@
 let can_click = true;
 
-function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, window_BUTTON_CONFIRM, function_NAME) {
+function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, window_BUTTON_CONFIRM, function_NAME, callback, isInput) {
+    // Creating elements
+    const window_background = document.createElement('div');
+    const popup_window = document.createElement('div');
+    const window_title = document.createElement('div');
+    const window_content = document.createElement('div');
+    const button_container = document.createElement('div');
+    const cancel_button = document.createElement('button');
+    const confirm_button = document.createElement('button');
+    const input = document.createElement('input');
+
     can_click = false;
 
-    const window_background = document.createElement('div');
+    // Styles for the popup background
     window_background.style.cssText = `
         position: absolute;
         z-index: 1000;
@@ -14,8 +24,7 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     `;
     document.body.appendChild(window_background);
 
-
-    const popup_window = document.createElement('div');
+    // Styles for the popup window
     popup_window.style.cssText = `
         padding: 15px;
         position: absolute;
@@ -33,7 +42,7 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     `;
     window_background.appendChild(popup_window);
 
-    const window_title = document.createElement('div');
+    // Title
     window_title.style.cssText = `
         width: 100%;
         height: auto;
@@ -43,7 +52,7 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     window_title.textContent = window_ALERT;
     popup_window.appendChild(window_title);
 
-    const window_content = document.createElement('div');
+    // Content
     window_content.style.cssText = `
         width: 100%;
         height: 50%;
@@ -52,7 +61,13 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     window_content.textContent = window_CONTENT;
     popup_window.appendChild(window_content);
 
-    const button_container = document.createElement('div');
+    // Input field (optional)
+    if (isInput) {
+        input.type = 'text';
+        popup_window.appendChild(input);
+    }
+
+    // Button container
     button_container.style.cssText = `
         position: absolute;
         display: flex;
@@ -65,12 +80,17 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     `;
     popup_window.appendChild(button_container);
 
+    // Cancel button
     if (window_BUTTON_CANCEL !== undefined) {
-        const cancel_button = document.createElement('button');
         cancel_button.style.cssText = `
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+            min-width: 50px;
             background-color: black;
-            width: 80px;
-            margin: 2px;
+            color: white;
+            border: 2px solid white;
+            border-radius: 4px;
         `;
         cancel_button.textContent = window_BUTTON_CANCEL;
         cancel_button.onclick = function () {
@@ -80,28 +100,49 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
         button_container.appendChild(cancel_button);
     }
 
-    const confirm_button = document.createElement('button');
+    // Confirm button
     confirm_button.style = `
+        margin: 5px;
+        padding: 5px;
+        cursor: pointer;
+        min-width: 50px;
         background-color: black;
-        width: 80px;
-        margin: 2px;
+        color: white;
+        border: 2px solid white;
+        border-radius: 4px;
     `;
     confirm_button.textContent = window_BUTTON_CONFIRM;
 
-
     if (window_BUTTON_CONFIRM !== undefined) {
+        confirm_button.onclick = function () {
+            let value = null;
 
-        if (typeof window[function_NAME] === 'function') {
-            confirm_button.onclick = function () {
-                can_click = true;
-                window[function_NAME]();
+            // Check if the function exists
+            if (typeof window[function_NAME] === 'function') {
+                window[function_NAME](); // Call the function dynamically if it exists
             }
-        } else {
-            console.log(`Function ${function_NAME} does not exist.`);
-        }
+
+            // Handle input validation if the input is enabled
+            if (isInput) {
+                value = parseFloat(input.value);
+                if (isNaN(value) || value <= 0) {
+                    createPopupWindow('Alert', 'Invalid input. Please enter a valid number.', 'Ok', undefined, undefined);
+                }
+            }
+
+            // Call the callback with the value (input or no input)
+            if (typeof callback === 'function') {
+                callback(value);
+            }
+
+            window_background.remove();  // Close the popup window
+            can_click = true;
+        };
         button_container.appendChild(confirm_button);
     }
 
+
+    // Draggable logic
     let isDragging = false;
     let startX, startY, initialX, initialY;
 

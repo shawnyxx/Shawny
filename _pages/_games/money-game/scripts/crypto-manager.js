@@ -157,3 +157,17 @@ const cryptoChart = new Chart(ctx, {
 
 // Example usage
 addData(cryptoChart, 0);
+
+const crypto_gains_window = document.getElementById('crypto-gains-window');
+
+function viewCryptoGains() {
+    crypto_gains_window.style.display = 'block';
+    crypto_gains_window.classList.add('open');
+    crypto_gains_window.style.scale = '1';
+    crypto_gains_window.classList.remove('close');
+}
+
+function closeCryptoGains() {
+    crypto_gains_window.classList.add('close');
+    crypto_gains_window.classList.remove('open');
+}

@@ -82,6 +82,11 @@ document.querySelectorAll('*').forEach(element => {
 });
 
 document.querySelectorAll('.draggable').forEach(draggable => {
+    // Ensure the draggable element has position style set
+    if (window.getComputedStyle(draggable).position === 'static') {
+        draggable.style.position = 'relative';
+    }
+
     draggable.addEventListener('mousedown', (event) => {
         const initialX = event.clientX - draggable.offsetLeft;
         const initialY = event.clientY - draggable.offsetTop;
