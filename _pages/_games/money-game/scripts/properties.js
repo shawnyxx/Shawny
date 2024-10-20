@@ -7,6 +7,7 @@ function doPropertyFinances() {
 }
 
 
+
 function doPropertyTypes() {
     property_types = {
         "Apartement": {
