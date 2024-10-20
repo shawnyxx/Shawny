@@ -1,16 +1,18 @@
 
-const manage_property_window = document.getElementById(
-  "manage-property-window"
-);
+const manage_property_window = document.getElementById("manage-property-window");
 
 const property_list = document.getElementById("property-window-content");
 
-function closeManagePropertyWindow() {
-  manage_property_window.style.display = "none";
+function openManagePropertyWindow() {
+  manage_property_window.style.display = 'block';
+  manage_property_window.classList.add('open');
+  manage_property_window.style.scale = '1';
+  manage_property_window.classList.remove('close');
 }
 
-function openManagePropertyWindow() {
-  manage_property_window.style.display = "block";
+function closeManagePropertyWindow() {
+  manage_property_window.classList.add('close');
+  manage_property_window.classList.remove('open');
 }
 
 function updateManagePropertyWindow() {
@@ -20,7 +22,7 @@ function updateManagePropertyWindow() {
     const property = bought_properties[i];
     const propertyName = property.name;
     const propertyValue = property.price;
-    const propertyAdress = randomAdress();
+    const propertyAdress = property.adress;
 
     const propertyElement = document.createElement("div");
     propertyElement.id = "property-element";
@@ -30,7 +32,6 @@ function updateManagePropertyWindow() {
       overflow: hidden;
       right: 0;
       top: 0;
-
     `;
 
     const houseTypeContainer = document.createElement("div");

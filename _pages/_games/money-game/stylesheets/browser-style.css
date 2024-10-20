@@ -53,10 +53,11 @@ browsercontainer {
 
 browsertopbar {
   grid-area: browser-topbar;
-  background-color: black;
+  background: black;
   border-bottom: 1px solid white;
   display: flex;
   place-items: center;
+  height: 35px;
   padding: 2px;
 }
 

@@ -1,3 +1,7 @@
+// Referencing the html elements
+const month_indicator_element = document.getElementById('month-indicator');
+
+
 const month = {
     1: "January",
     2: "February",
@@ -28,8 +32,21 @@ function yearManager() {
     }
 }
 
-setInterval(() => {
-    if (game_started) {
+function monthIndicator() {
+    const increment = (150 - 0) / (month_length / 10);
+    let currentWidth = 0;
+
+    const interval = setInterval(() => {
+        month_indicator_element.style.width = (currentWidth += increment) + 'px';
+        if (currentWidth >= 150) clearInterval(interval);
+    }, 10);
+}
+
+function startMonth() {
+    monthIndicator();
+    setInterval(() => {
+        monthIndicator();
+
         yearManager();
         doNotification('A new month has just started, you can see you latest financial report in your stats dashboard.', 'orange', 'orange');
         if (spammUpgrade) {
@@ -53,10 +70,19 @@ setInterval(() => {
             doNotification(`Last month profit: ${shortenMoneyDisplay(monthly_profit)}`, 'red', 'green');
         }
 
+        const moneyMachineBreakChance = Math.floor(Math.random() * (100 - 1) + 1);
+        if (moneyMachineBreakChance <= 25 && money_per_tap > 0) {
+            money_per_tap = 0;
+            updateSalaryElement();
+            doNotification('Your money machine broke down, you will need to buy a new one.', 'red', 'red');
+            doMoneyMachineButton();
+        }
+
         monthly_profit = 0;
 
-        setStoredData();
-    }
+        setStoredData("money game");
 
-    
-}, month_length);
+
+
+    }, month_length);
+}
