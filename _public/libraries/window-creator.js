@@ -83,9 +83,13 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
     // Cancel button
     if (window_BUTTON_CANCEL !== undefined) {
         cancel_button.style.cssText = `
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
             background-color: black;
-            width: 80px;
-            margin: 2px;
+            color: white;
+            border: 2px solid white;
+            border-radius: 4px;
         `;
         cancel_button.textContent = window_BUTTON_CANCEL;
         cancel_button.onclick = function () {
@@ -97,9 +101,13 @@ function createPopupWindow(window_ALERT, window_CONTENT, window_BUTTON_CANCEL, w
 
     // Confirm button
     confirm_button.style = `
+        margin: 5px;
+        padding: 5px;
+        cursor: pointer;
         background-color: black;
-        width: 80px;
-        margin: 2px;
+        color: white;
+        border: 2px solid white;
+        border-radius: 4px;
     `;
     confirm_button.textContent = window_BUTTON_CONFIRM;
 
