@@ -1,65 +1,11 @@
-import './BigWindow.css';
-import React, { useState, useRef, useEffect } from 'react';
-
-function BigWindow({ children, buttons, onClose }) {
-    const [isDragging, setIsDragging] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-    const windowRef = useRef(null);
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            if (isDragging) {
-                setPosition({
-                    x: e.clientX - dragStart.x,
-                    y: e.clientY - dragStart.y,
-                });
-            }
-        };
-
-        const handleMouseUp = () => {
-            setIsDragging(false);
-        };
-
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseup', handleMouseUp);
-        };
-    }, [isDragging, dragStart]);
-
-    const handleMouseDown = (e) => {
-        const rect = windowRef.current.getBoundingClientRect();
-        setDragStart({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
-        setIsDragging(true);
-    };
-
+function BigWindow({ children, onClose }) {
     return (
-        <div
-            ref={windowRef}
-            className="BigWindow"
-            style={{
-                position: 'absolute',
-                left: `${position.x}px`,
-                top: `${position.y}px`,
-                cursor: isDragging ? 'grabbing' : 'default'
-            }}
-            onMouseDown={handleMouseDown}
-        >
-            <div
-                className="BigWindowContent"
-                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-            >
-                {children}
-            </div>
-            <div className="BigWindowButtonsContainer">
-                <button className="BigWindowButton default-button" onClick={onClose}>Close</button>
-                {buttons}
+        <div className="fixed z-50 top-0 left-0 w-full h-full flex items-center justify-center">
+            <div className="w-3/4 h-2/4 p-8 flex flex-col items-center justify-center bg-black bg-opacity-75 backdrop-blur-lg border border-white rounded">
+                <div className="text-white text-center w-full h-full overflow-y-auto">
+                    {children}
+                </div>
+                <button className="border translate-y-[55px] text-white border-white rounded bg-black min-w-20 p-2" onClick={onClose}>Close</button>
             </div>
         </div>
     );

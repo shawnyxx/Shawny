@@ -1,14 +1,22 @@
-import './Game.css';
+import React, { useState } from "react";
+import PlayScreen from './components/play-screen/PlayScreen';
+import Dashboard from "./components/dashboard/Dashboard";
 
 function MoneyGame() {
-    return (
-        <div className="MoneyGame">
-            <header>
-                <h1>the MONEY Game</h1>
-                <p>We are working on it...</p>
-            </header>
-        </div>
-    );
+    const [renderedComponent, setRenderedComponent] = useState("play-screen");
+
+    const renderScreen = () => {
+        switch (renderedComponent) {
+            case "play-screen":
+                return <PlayScreen renderedComponent={renderedComponent} onPlayClick={() => setRenderedComponent("dashboard")} />;
+            case "dashboard":
+                return <Dashboard />;
+            default:
+                return <PlayScreen renderedComponent={renderedComponent} onPlayClick={() => setRenderedComponent("dashboard")} />;
+        }
+    };
+
+    return <div>{renderScreen()}</div>;
 }
 
 export default MoneyGame;

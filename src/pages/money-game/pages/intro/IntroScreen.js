@@ -1,12 +1,8 @@
-import './IntroScreen.css';
 
-function IntroScreen() {
+function IntroScreen({ setCurrentScreen }) {
     return (
-        <div className="IntroScreen">
-            <header>
-                <h1>the MONEY Game</h1>
-                <p>We are working on it...</p>
-            </header>
+        <div className="fixed top-0 left-0 w-full h-full">
+            <video className="fixed top-0 left-0 w-full h-full object-cover" src="/files/videos/money-game-prologue.mp4" autoPlay loop playInline={true} controls={false} onClick={() => setCurrentScreen('game')} />
         </div>
     );
 }

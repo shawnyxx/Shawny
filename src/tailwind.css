@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    src: url('https://fonts.gstatic.com/s/raleway/v22/1Ptug8zYS_SKggPNyCAIT5lu.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'iconfonx';
+    src: url('/src/assets/fonts/iconfonx.ttf');
+}
