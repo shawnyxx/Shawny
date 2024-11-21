@@ -27,10 +27,7 @@ function Main() {
   return (
     <div className="Main">
       {renderComponent()}
-      <ControlButtons 
-        currentComponent={currentComponent} 
-        setCurrentComponent={setCurrentComponent} 
-      />
+      <ControlButtons currentComponent={currentComponent} setCurrentComponent={setCurrentComponent} />
     </div>
   );
 }

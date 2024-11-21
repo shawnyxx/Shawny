@@ -8,10 +8,17 @@
         border-radius: 6px;
         padding: 25px;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
         align-items: center;
+        cursor: grab;
+    }
+
+    .close-button {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(18px);
     }
 }
 
@@ -25,8 +32,16 @@
         border-radius: 6px;
         padding: 25px;
         display: flex;
+        font-size: 0.8rem;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
+        cursor: grab;
+    }
+
+    .close-button {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(18px);
     }
 }

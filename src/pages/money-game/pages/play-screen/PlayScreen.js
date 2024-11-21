@@ -5,7 +5,7 @@ import Box from './components/box/Box';
 import BigWindow from '../../../../components/windows/big/BigWindow';
 import { useState } from 'react';
 
-function PlayScreen({ setGameState }) {
+function PlayScreen({ currentScreen, setCurrentScreen }) {
     const [isShowingCredits, setIsShowingCredits] = useState(false);
 
     return (
@@ -13,7 +13,7 @@ function PlayScreen({ setGameState }) {
             <video className='LibertyStatueVideo' src="/files/videos/liberty-statue.mp4" autoPlay loop muted />
             <BgBlur>
                 <h1 className='raleway-black title'>the MONEY Game</h1>
-                <Box setIsShowingCredits={setIsShowingCredits} setGameState={setGameState} />
+                <Box setIsShowingCredits={setIsShowingCredits} setCurrentScreen={setCurrentScreen} currentScreen={currentScreen} />
 
                 {isShowingCredits && (
                     <BigWindow isShowingCredits={isShowingCredits} onClose={() => setIsShowingCredits(false)}>

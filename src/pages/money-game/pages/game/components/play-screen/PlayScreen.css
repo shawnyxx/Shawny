@@ -1,0 +1,104 @@
+/* pages/menu/MainMenu.css */
+.PlayScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.PlayScreen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../files/images/new-york-map.png');
+    background-size: cover;
+    filter: blur(15px);
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.WhatsNewContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+
+.title {
+    font-size: 3.5rem !important;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.MenuButton {
+    color: white;
+    background: rgba(20, 20, 20, 0.6);
+    border: none;
+    border-radius: 6px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem; 
+    margin:15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 0 10px 5px rgba(128, 128, 128, 0.5);
+}
+
+.MenuButton:hover {
+    transform: scale(1.05);
+    background: rgba(40, 40, 40, 0.7);
+}
+
+.ButtonContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Mobile devices */
+@media screen and (max-width: 992px) {
+    .title {
+        font-size: 2rem!important;
+        margin-top: 80px;
+    }
+    
+    .ButtonContainer {
+        flex-direction: column;
+        padding: 0 20px;
+        margin-top: 20px;
+    }
+    
+    .MenuButton {
+        min-width: 120px; 
+        padding: 8px 16px; 
+        font-size: 0.9rem;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+    .title {
+        font-size: 3.5rem !important;
+        margin: 40px 0;
+    }
+    
+    .ButtonContainer {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .MenuButton {
+        min-width: 140px; 
+    }
+}

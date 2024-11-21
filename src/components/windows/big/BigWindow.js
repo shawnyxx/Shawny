@@ -1,67 +1,49 @@
 import './BigWindow.css';
-import React, { useState, useRef, useEffect } from 'react';
+import Draggable from 'react-draggable';
+import BgBlur from '../../background-blur/BgBlur'
+import { useState, useEffect } from 'react';
 
-function BigWindow({ children, buttons, onClose }) {
-    const [isDragging, setIsDragging] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-    const windowRef = useRef(null);
+function BigWindow({ children, isVisible, onClose }) {
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const handleMouseMove = (e) => {
-            if (isDragging) {
-                setPosition({
-                    x: e.clientX - dragStart.x,
-                    y: e.clientY - dragStart.y,
-                });
-            }
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
         };
 
-        const handleMouseUp = () => {
-            setIsDragging(false);
-        };
-
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('resize', handleResize);
         };
-    }, [isDragging, dragStart]);
+    }, []);
 
-    const handleMouseDown = (e) => {
-        const rect = windowRef.current.getBoundingClientRect();
-        setDragStart({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
-        setIsDragging(true);
-    };
+
+    const Window = () => (
+        <div className="BigWindow">
+            <Draggable disabled={isMobile} >
+                <div className="BigWindowContent" onMouseDown={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
+                    {children}
+                    <button className={`BigWindowButton default-button`} onClick={onClose}>Close</button>
+                </div>
+            </Draggable>
+        </div>
+    );
+
+    const handleStateChange = () => {
+        switch (isVisible) {
+            case true:
+                return <Window />;
+            case false:
+                return null;
+            default:
+                return null;
+        }
+    }
 
     return (
-        <div
-            ref={windowRef}
-            className="BigWindow"
-            style={{
-                position: 'absolute',
-                left: `${position.x}px`,
-                top: `${position.y}px`,
-                cursor: isDragging ? 'grabbing' : 'default'
-            }}
-            onMouseDown={handleMouseDown}
-        >
-            <div
-                className="BigWindowContent"
-                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-            >
-                {children}
-            </div>
-            <div className="BigWindowButtonsContainer">
-                <button className="BigWindowButton default-button" onClick={onClose}>Close</button>
-                {buttons}
-            </div>
-        </div>
+        handleStateChange()
     );
 }
 
