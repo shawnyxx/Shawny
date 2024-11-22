@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.12f8dbd4.css",
-    "main.js": "/static/js/main.56710829.js",
+    "main.css": "/static/css/main.3ccafcff.css",
+    "main.js": "/static/js/main.6c7939e3.js",
     "static/js/488.86fd3ae7.chunk.js": "/static/js/488.86fd3ae7.chunk.js",
+    "static/media/new-york-map.png": "/static/media/new-york-map.d36955edf444c25e76c9.png",
     "index.html": "/index.html",
-    "main.12f8dbd4.css.map": "/static/css/main.12f8dbd4.css.map",
-    "main.56710829.js.map": "/static/js/main.56710829.js.map",
+    "main.3ccafcff.css.map": "/static/css/main.3ccafcff.css.map",
+    "main.6c7939e3.js.map": "/static/js/main.6c7939e3.js.map",
     "488.86fd3ae7.chunk.js.map": "/static/js/488.86fd3ae7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.12f8dbd4.css",
-    "static/js/main.56710829.js"
+    "static/css/main.3ccafcff.css",
+    "static/js/main.6c7939e3.js"
   ]
 }

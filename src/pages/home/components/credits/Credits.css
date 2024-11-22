@@ -1,0 +1,7 @@
+.CreditsScroll {
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0 10px;
+}
