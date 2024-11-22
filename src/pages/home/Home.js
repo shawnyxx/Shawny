@@ -5,6 +5,7 @@ import BouncingBalls from './components/bouncing-balls/BouncingBalls';
 import NormalPopup from '../../components/windows/normal/NormalPopup';
 import { useState } from 'react';
 import BigWindow from '../../components/windows/big/BigWindow';
+import Credits from './components/credits/Credits';
 
 function Home({ setCurrentComponent }) {
     const [settingsVisible, setSettingsVisible] = useState(false);
@@ -15,6 +16,8 @@ function Home({ setCurrentComponent }) {
                 <h1>Settings</h1>
                 <p>Coming soon...</p>
             </BigWindow>
+
+            <Credits />
 
             <div className="Home">
                 <ClickToHide />

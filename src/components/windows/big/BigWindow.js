@@ -1,6 +1,6 @@
 import './BigWindow.css';
 import Draggable from 'react-draggable';
-import BgBlur from '../../background-blur/BgBlur'
+import BgBlur from '../../background-blur/BgBlur';
 import { useState, useEffect } from 'react';
 
 function BigWindow({ children, isVisible, onClose }) {

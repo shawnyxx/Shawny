@@ -1,7 +1,7 @@
 import React from "react";
 import "./PlayScreen.css";
 
-function PlayScreen({ onPlayClick, onCreditsClick }) {
+function PlayScreen({ onPlayClick, onCreditsClick, setRenderedComponent }) {  
   return (
     <div className="PlayScreen">
       <div className="WhatsNewContainer">
@@ -11,7 +11,7 @@ function PlayScreen({ onPlayClick, onCreditsClick }) {
       <h1 className="title">MONEY GAME</h1>
 
       <div className="ButtonContainer">
-        <button className="MenuButton" onClick={onPlayClick}>
+        <button className="MenuButton" setRenderedComponent={setRenderedComponent} onClick={onPlayClick}>
           <span>PLAY</span>
         </button>
         <button className="MenuButton" onClick={onCreditsClick}>
